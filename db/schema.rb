@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_191603) do
     t.string "phone_whatsapp"
     t.string "cnic"
     t.date "dob"
+    t.integer "age"
     t.integer "gender"
     t.string "blood_group"
     t.string "city"

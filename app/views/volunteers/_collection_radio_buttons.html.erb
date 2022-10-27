@@ -1,0 +1,5 @@
+<% collection.each do |i| %>
+  <%= f.radio_button name, i.parameterize.underscore.to_sym %>
+  <%= i %>
+  <br />
+<% end %>

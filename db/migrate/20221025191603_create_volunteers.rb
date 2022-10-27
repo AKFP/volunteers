@@ -7,6 +7,7 @@ class CreateVolunteers < ActiveRecord::Migration[7.0]
       t.string :phone_whatsapp
       t.string :cnic
       t.date :dob
+      t.integer :age
       t.integer :gender
       t.string :blood_group
       t.string :city

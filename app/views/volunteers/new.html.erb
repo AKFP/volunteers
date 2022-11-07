@@ -16,12 +16,12 @@
 
     <div class="-mx-3 md:flex mb-6 divide-x-0">
       <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-        <%= f.label 'Email', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Email' %>
         <%= f.text_field :email, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Email' %>
         <!--      <p class="text-red text-xs italic">Please fill out this field.</p>-->
       </div>
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Name', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Name' %>
         <%= f.text_field :name, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Name' %>
       </div>
 
@@ -29,24 +29,24 @@
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'father_name', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'father_name' %>
         <%= f.text_field :father_name, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Father Name' %>
       </div>
 
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Contact Whatsapp', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Contact Whatsapp' %>
         <%= f.text_field :phone_whatsapp, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Contact (Whatsapp)' %>
       </div>
     </div>
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'CNIC', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label :cnic, 'CNIC' %>
         <%= f.text_field :cnic, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'CNIC' %>
       </div>
 
       <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-        <%= f.label 'City', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'City' %>
         <%= f.text_field :city, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'City' %>
       </div>
 
@@ -54,48 +54,48 @@
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Current Address', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label :current_address, 'Current Address' %>
         <%= f.text_field :current_address, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Current Address' %>
       </div>
 
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Home Town Address', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Home Town Address' %>
         <%= f.text_field :hometown_address, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Home Town Address' %>
       </div>
     </div>
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Educational Institute', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Educational Institute' %>
         <%= f.text_field :educational_institute, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Educational Institute' %>
       </div>
 
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Degree Department', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Degree Department' %>
         <%= f.text_field :degree_department, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Degree Department' %>
       </div>
     </div>
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Age', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Age' %>
         <%= f.number_field :age, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Age' %>
       </div>
 
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Date of Birth', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Date of Birth' %>
         <%= f.date_field :dob, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Date of Birth' %>
       </div>
     </div>
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Gender', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Gender', class: 'block font-bold' %>
         <%= render partial: 'collection_radio_buttons', locals: {collection: ['Male', 'Female'], name: 'gender', f: f} %>
       </div>
 
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Professional Details', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Professional Details', class: 'block font-bold' %>
         <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::PROFESSIONAL_DETAILS, f: f, name: 'volunteer[professional_details][]'} %>
       </div>
 
@@ -103,36 +103,36 @@
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Blood Group', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Blood Group', class: 'block font-bold' %>
         <%= render partial: 'collection_radio_buttons', locals: { collection: ['O+','O-','A+','A-','B+','B-','AB+','AB-','Not Specified'], name: 'blood_group', f: f } %>
       </div>
 
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Availability', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Availability', class: 'block font-bold' %>
         <%= render partial: 'collection_check_boxes', locals: {collection: ['Full Time', 'Part Time'], f: f, name: 'volunteer[availability][]'} %>
       </div>
     </div>
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Skills', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Skills', class: 'block font-bold' %>
         <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::SKILLS, f: f, name: 'volunteer[skills][]'} %>
       </div>
 
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Area of Interest', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Area of Interest', class: 'block font-bold' %>
         <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::AREA_OF_INTEREST, f: f, name: 'volunteer[area_of_interest][]'} %>
       </div>
     </div>
 
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3">
-        <%= f.label 'Please mention days', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'Please mention days', class: 'block font-bold' %>
         <%= render partial: 'collection_check_boxes', locals: {collection: Date::DAYNAMES, f: f, name: 'volunteer[availability_days][]'} %>
       </div>
 
       <div class="md:w-1/2 px-3">
-        <%= f.label 'How did you come to know about us?', class: 'block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2' %>
+        <%= f.label 'How did you come to know about us?', class: 'block font-bold' %>
         <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::MARKETING_MEDIUM, f: f, name: 'volunteer[marketing_medium][]'} %>
       </div>
     </div>

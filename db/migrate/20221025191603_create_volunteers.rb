@@ -18,10 +18,10 @@ class CreateVolunteers < ActiveRecord::Migration[7.0]
       t.string :semester
       t.string :professional_details, array: true, default: []
       t.string :skills, array: true, default: []
-      t.string :area_of_interest
+      t.string :area_of_interest, array: true, default: []
       t.string :availability, array: true, default: []
       t.string :availability_days, array: true, default: []
-      t.string :how_you_know, array: true, default: []
+      t.string :marketing_medium, array: true, default: []
 
       t.timestamps
     end

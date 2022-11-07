@@ -32,10 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_191603) do
     t.string "semester"
     t.string "professional_details", default: [], array: true
     t.string "skills", default: [], array: true
-    t.string "area_of_interest"
+    t.string "area_of_interest", default: [], array: true
     t.string "availability", default: [], array: true
     t.string "availability_days", default: [], array: true
-    t.string "how_you_know", default: [], array: true
+    t.string "marketing_medium", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

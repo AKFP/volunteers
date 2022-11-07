@@ -1,5 +1,5 @@
 <% collection.each do |i| %>
-  <%= f.check_box i.parameterize.underscore.to_sym, name: name %>
+  <%= check_box_tag name, i %>
   <%= i %>
   <br />
 <% end %>

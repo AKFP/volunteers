@@ -92,6 +92,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    doorkeeper (5.6.0)
+      railties (>= 5)
     erubi (1.11.0)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
@@ -223,6 +225,7 @@ DEPENDENCIES
   bootsnap
   capybara
   devise (~> 4.8)
+  doorkeeper (~> 5.6)
   figaro
   importmap-rails
   jbuilder

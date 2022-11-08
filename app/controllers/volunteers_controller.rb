@@ -1,4 +1,6 @@
 class VolunteersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @application = Doorkeeper::Application.where(name: 'web client').first
 

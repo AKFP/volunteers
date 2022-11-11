@@ -6,7 +6,12 @@ class Volunteer < ApplicationRecord
 
   enum status: [:registered, :approved, :rejected]
 
+  ## Validations
   validates :name, presence: { message: "Name can't be blank."}
   validates :email, presence: { message: 'Please enter a valid email address.' }
+  validates :user_id, uniqueness: { message: 'A user can have only one volunteer profile.', allow_blank: true }
+
+  ## Associations
+  belongs_to :user, optional: true
 
 end

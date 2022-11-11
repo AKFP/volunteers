@@ -1,5 +1,5 @@
 class VolunteersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new, :create, :thank_you]
 
   def index
     @application = Doorkeeper::Application.where(name: 'web client').first
@@ -17,6 +17,8 @@ class VolunteersController < ApplicationController
 
   def create
     @volunteer = Volunteer.new(params_volunteer)
+    @volunteer.user_id = current_user.id if current_user
+
     respond_to do |format|
       if @volunteer.save
         format.turbo_stream { redirect_to thank_you_volunteers_path()  }

@@ -1,0 +1,11 @@
+api:
+  invalid_resource:
+    code: '1'
+    status: '400'
+    title: 'Bad Request'
+
+  not_found:
+    code: '2'
+    status: '404'
+    title: 'Not Found'
+    details: 'Resource not found.'

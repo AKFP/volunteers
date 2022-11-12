@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   draw :api
 
+  namespace :admin do
+    resources :volunteers, only: [:index]
+  end
+
   resources :volunteers do
     collection do
       get :thank_you

@@ -1,33 +1,37 @@
 h1 Volunteers Management
 hr
-table.table.table-bordered
-  thead.table-dark
-    tr
-      th ID
-      th Name
-      th Email
-      th Father Name
-      th Phone
-      th CNIC
-      th City
-      th Blood Group
-      th Age
-      th Status
-      th Actions
-  tbody
-    - @volunteers.each do |v|
+- if @volunteers.any?
+  table.table.table-bordered
+    thead.table-dark
       tr
-        td = v.id
-        td = v.name
-        td = v.email
-        td = v.father_name
-        td = v.phone_whatsapp
-        td = v.cnic
-        td = v.city
-        td = v.blood_group
-        td = v.age
-        td = v.status.humanize
-        td Edit
+        th ID
+        th Name
+        th Email
+        th Father Name
+        th Phone
+        th CNIC
+        th City
+        th Blood Group
+        th Age
+        th Status
+        th Actions
+    tbody
+      - @volunteers.each do |v|
+        tr
+          td = v.id
+          td = v.name
+          td = v.email
+          td = v.father_name
+          td = v.phone_whatsapp
+          td = v.cnic
+          td = v.city
+          td = v.blood_group
+          td = v.age
+          td = v.status.humanize
+          td Edit
+- else
+  .alert.alert-primary
+    | No volunteers found.
 
 br
 br

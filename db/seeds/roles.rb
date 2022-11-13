@@ -1,8 +1,10 @@
 ## Roles
 module Roles
+  puts ">>>>>>>> Seeding Roles"
   roles = [
     "Super Admin",
-    "User"
+    "Ambassador",
+    "Volunteer"
   ]
   Role.delete_all
   ActiveRecord::Base.connection.execute("ALTER SEQUENCE roles_id_seq RESTART WITH 1")

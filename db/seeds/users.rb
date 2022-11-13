@@ -1,3 +1,5 @@
+puts ">>>>>>>> Seeding Users"
+
 if Doorkeeper::Application.count.zero?
   Doorkeeper::Application.create!(name: 'web client', redirect_uri: '', scopes: "")
   Doorkeeper::Application.create!(name: 'iOS client', redirect_uri: '', scopes: "")

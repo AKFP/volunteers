@@ -8,18 +8,19 @@
   <div class="col-md-7 col-lg-12">
     <%= form_with model: @volunteer, class: 'bold_labels' do |f| %>
       <% if @volunteer.errors.any? %>
-        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-          <h1>Sorry! your form could not be submitted due to following errors:</h1>
+        <div class="row g-4 bg-white border">
+          <h4>Sorry! your form could not be submitted due to following errors:</h4>
 
-          <ul>
+          <ul class="ms-2">
             <% @volunteer.errors.each do |error| %>
-              <li><%= error.message %></li>
+              <li class="text-danger"><%= error.message %></li>
             <% end %>
           </ul>
         </div>
+        <br><br>
       <% end %>
 
-      <div class="row g-4">
+      <div class="row g-4 bg-white border">
         <div class="col-sm-6">
           <%= f.label 'Name', class: 'form-label' %>
           <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
@@ -77,7 +78,7 @@
 
         <div class="col-sm-6">
           <%= f.label 'Date of Birth', class: 'form-label' %>
-          <%= f.date_field :age, class: 'form-control', placeholder: 'Date of Birth' %>
+          <%= f.date_field :dob, class: 'form-control', placeholder: 'Date of Birth' %>
         </div>
 
         <div class="col-sm-6">
@@ -123,10 +124,8 @@
         <div class="col-sm-6">
           <%=f.submit 'Submit', class: "btn btn-primary" %>
         </div>
-
       </div>
 
     <% end %>
-
   </div>
 </div>

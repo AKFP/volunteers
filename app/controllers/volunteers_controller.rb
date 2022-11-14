@@ -22,7 +22,7 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.save
-        format.turbo_stream { redirect_to thank_you_volunteers_path()  }
+        format.html { redirect_to thank_you_volunteers_path()  }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

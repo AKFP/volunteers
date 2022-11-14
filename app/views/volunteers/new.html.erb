@@ -1,148 +1,132 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Volunteer Registration</h1>
-  <!-- component -->
-  <%= form_with model: @volunteer do |f| %>
-    <% if @volunteer.errors.any? %>
-      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-        <h1>Sorry! your form could not be submitted due to following errors:</h1>
+<div class="py-5 text-center">
+  <h2>Volunteer Registration</h2>
+  <!--      <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>-->
+</div>
 
-        <ul>
-          <% @volunteer.errors.each do |error| %>
-            <li><%= error.message %></li>
-          <% end %>
-        </ul>
+
+<div class="row">
+  <div class="col-md-7 col-lg-12">
+    <%= form_with model: @volunteer, class: 'bold_labels' do |f| %>
+      <% if @volunteer.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+          <h1>Sorry! your form could not be submitted due to following errors:</h1>
+
+          <ul>
+            <% @volunteer.errors.each do |error| %>
+              <li><%= error.message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="row g-4">
+        <div class="col-sm-6">
+          <%= f.label 'Name', class: 'form-label' %>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Email', class: 'form-label' %>
+          <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Father Name', class: 'form-label' %>
+          <%= f.text_field :father_name, class: 'form-control', placeholder: 'Father Name' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Contact Whatsapp', class: 'form-label' %>
+          <%= f.text_field :phone_whatsapp, class: 'form-control', placeholder: 'Contact (Whatsapp)' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label :cnic, 'CNIC', class: 'form-label' %>
+          <%= f.text_field :cnic, class: 'form-control', placeholder: 'CNIC' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'City', class: 'form-label' %>
+          <%= f.text_field :city, class: 'form-control', placeholder: 'City' %>
+        </div>
+
+        <div class="col-sm-12">
+          <%= f.label 'Current Address', class: 'form-label' %>
+          <%= f.text_field :current_address, class: 'form-control', placeholder: 'Current Address' %>
+        </div>
+
+        <div class="col-sm-12">
+          <%= f.label 'Hometown Address', class: 'form-label' %>
+          <%= f.text_field :hoemetown_address, class: 'form-control', placeholder: 'Hometown Address' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Education Institute', class: 'form-label' %>
+          <%= f.text_field :educational_institute, class: 'form-control', placeholder: 'Education Institute' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Degree Department', class: 'form-label' %>
+          <%= f.text_field :degree_department, class: 'form-control', placeholder: 'Degree Department' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Age', class: 'form-label' %>
+          <%= f.number_field :age, class: 'form-control', placeholder: 'Age' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Date of Birth', class: 'form-label' %>
+          <%= f.date_field :age, class: 'form-control', placeholder: 'Date of Birth' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Gender', class: 'form-label' %><br />
+          <%= render partial: 'collection_radio_buttons', locals: {collection: ['Male', 'Female'], name: 'gender', f: f} %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Professional Details', class: 'form-label' %><br />
+          <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::PROFESSIONAL_DETAILS, f: f, name: 'volunteer[professional_details][]'} %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Blood Group', class: 'form-label' %><br />
+          <%= render partial: 'collection_radio_buttons', locals: { collection: ['O+','O-','A+','A-','B+','B-','AB+','AB-','Not Specified'], name: 'blood_group', f: f } %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Availability', class: 'form-label' %><br />
+          <%= render partial: 'collection_check_boxes', locals: {collection: ['Full Time', 'Part Time'], f: f, name: 'volunteer[availability][]'} %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label :skills, 'Skills', class: 'form-label' %><br />
+          <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::SKILLS, f: f, name: 'volunteer[skills][]'} %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label :area_of_interest, 'Area of Interest', class: 'form-label' %><br />
+          <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::AREA_OF_INTEREST, f: f, name: 'volunteer[area_of_interest][]'} %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'Please mention days', class: 'form-label' %><br>
+          <%= render partial: 'collection_check_boxes', locals: {collection: Date::DAYNAMES, f: f, name: 'volunteer[availability_days][]'} %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.label 'How did you come to know about us?', class: 'form-label' %><br>
+          <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::MARKETING_MEDIUM, f: f, name: 'volunteer[marketing_medium][]'} %>
+        </div>
+
+        <div class="col-sm-6">
+          <%=f.submit 'Submit', class: "btn btn-primary" %>
+        </div>
+
       </div>
+
     <% end %>
 
-    <div class="-mx-3 md:flex mb-6 divide-x-0">
-      <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-        <%= f.label 'Email' %>
-        <%= f.text_field :email, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Email' %>
-        <!--      <p class="text-red text-xs italic">Please fill out this field.</p>-->
-      </div>
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Name' %>
-        <%= f.text_field :name, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Name' %>
-      </div>
-
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'father_name' %>
-        <%= f.text_field :father_name, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Father Name' %>
-      </div>
-
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Contact Whatsapp' %>
-        <%= f.text_field :phone_whatsapp, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Contact (Whatsapp)' %>
-      </div>
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label :cnic, 'CNIC' %>
-        <%= f.text_field :cnic, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'CNIC' %>
-      </div>
-
-      <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-        <%= f.label 'City' %>
-        <%= f.text_field :city, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'City' %>
-      </div>
-
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label :current_address, 'Current Address' %>
-        <%= f.text_field :current_address, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Current Address' %>
-      </div>
-
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Home Town Address' %>
-        <%= f.text_field :hometown_address, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Home Town Address' %>
-      </div>
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Educational Institute' %>
-        <%= f.text_field :educational_institute, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Educational Institute' %>
-      </div>
-
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Degree Department' %>
-        <%= f.text_field :degree_department, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Degree Department' %>
-      </div>
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Age' %>
-        <%= f.number_field :age, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Age' %>
-      </div>
-
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Date of Birth' %>
-        <%= f.date_field :dob, class: 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3', placeholder: 'Date of Birth' %>
-      </div>
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Gender', class: 'block font-bold' %>
-        <%= render partial: 'collection_radio_buttons', locals: {collection: ['Male', 'Female'], name: 'gender', f: f} %>
-      </div>
-
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Professional Details', class: 'block font-bold' %>
-        <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::PROFESSIONAL_DETAILS, f: f, name: 'volunteer[professional_details][]'} %>
-      </div>
-
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Blood Group', class: 'block font-bold' %>
-        <%= render partial: 'collection_radio_buttons', locals: { collection: ['O+','O-','A+','A-','B+','B-','AB+','AB-','Not Specified'], name: 'blood_group', f: f } %>
-      </div>
-
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Availability', class: 'block font-bold' %>
-        <%= render partial: 'collection_check_boxes', locals: {collection: ['Full Time', 'Part Time'], f: f, name: 'volunteer[availability][]'} %>
-      </div>
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Skills', class: 'block font-bold' %>
-        <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::SKILLS, f: f, name: 'volunteer[skills][]'} %>
-      </div>
-
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Area of Interest', class: 'block font-bold' %>
-        <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::AREA_OF_INTEREST, f: f, name: 'volunteer[area_of_interest][]'} %>
-      </div>
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'Please mention days', class: 'block font-bold' %>
-        <%= render partial: 'collection_check_boxes', locals: {collection: Date::DAYNAMES, f: f, name: 'volunteer[availability_days][]'} %>
-      </div>
-
-      <div class="md:w-1/2 px-3">
-        <%= f.label 'How did you come to know about us?', class: 'block font-bold' %>
-        <%= render partial: 'collection_check_boxes', locals: {collection: Volunteer::MARKETING_MEDIUM, f: f, name: 'volunteer[marketing_medium][]'} %>
-      </div>
-    </div>
-
-    <div class="-mx-3 md:flex mb-6">
-      <%=f.submit 'Submit', class: "inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" %>
-  <!--    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>-->
-    </div>
-
-
-  <% end %>
-
+  </div>
 </div>

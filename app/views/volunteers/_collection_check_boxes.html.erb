@@ -1,5 +1,5 @@
 <% collection.each do |i| %>
-  <%= check_box_tag name, i %>
+  <%= check_box_tag name, i, false, { class: 'form-check-input' } %>
   <%= i %>
   <br />
 <% end %>

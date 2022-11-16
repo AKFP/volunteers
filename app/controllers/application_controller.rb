@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  layout Proc.new { |controller| controller.devise_controller? ? 'blank' : 'application' }
+
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|

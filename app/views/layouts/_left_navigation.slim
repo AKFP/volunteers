@@ -1,0 +1,23 @@
+ul.nav.nav-pills.flex-column.mb-auto
+  li.nav-item
+    a.nav-link.active aria-current="page" href="#"
+      i.bi-house-door
+      |&nbsp; Home
+  li
+    a.nav-link.text-white href="#"
+      i.bi-speedometer2
+      |&nbsp; Dashboard
+  li
+    a.nav-link.text-white href="#"
+      svg.bi.pe-none.me-2 height="16" width="16"
+        use xlink:href="#table" /
+      | Orders
+  li
+    a.nav-link.text-white href="#"
+      svg.bi.pe-none.me-2 height="16" width="16"
+        use xlink:href="#grid" /
+      | Products
+  li
+    = link_to destroy_user_session_path(), class: 'nav-link text-white' do
+      i.bi-box-arrow-right
+      |&nbsp; Sign out

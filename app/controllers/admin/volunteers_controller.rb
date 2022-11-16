@@ -7,6 +7,6 @@ class Admin::VolunteersController < ApplicationController
 
   def index
     @volunteers = Volunteer.all.page(params[:page])
-    authorize! :manage, Volunteer
+    authorize! :manage, Volunteer, message: 'You are not authorized to access this page.'
   end
 end

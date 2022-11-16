@@ -9,11 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.has_role?(:super_admin)
-      admin_volunteers_path()
-    else
-      return volunteers_path()
-    end
+    return volunteers_path()
   end
 
   def after_sign_out_path_for(resource)

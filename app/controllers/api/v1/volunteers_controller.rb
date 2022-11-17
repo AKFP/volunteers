@@ -1,7 +1,7 @@
 class Api::V1::VolunteersController < ApiController
   include ApiErrorHandling
 
-  before_action :set_volunteer, only: [:show]
+  before_action :set_volunteer, only: [:show, :update]
 
   def index
     @volunteers = Volunteer.all
@@ -18,6 +18,10 @@ class Api::V1::VolunteersController < ApiController
     else
       respond_with_error('invalid_resource', @volunteer)
     end
+  end
+
+  def update
+    @volunteer.update(volunteer_params)
   end
 
   private

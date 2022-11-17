@@ -4,6 +4,7 @@ namespace :api do
       post '/', to: 'registrations#create', as: :user_registration
     end
     resources :volunteers
+    resources :static_data, only: [:index]
   end
 end
 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   draw :api
 
   namespace :admin do
-    resources :volunteers, only: [:index]
+    resources :volunteers, only: [:index, :show]
   end
 
   resources :volunteers do

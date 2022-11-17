@@ -13,6 +13,7 @@ class Api::V1::VolunteersController < ApiController
 
   def create
     @volunteer = Volunteer.new(volunteer_params)
+    @volunteer.user_id = current_user.id if current_user
     if @volunteer.save
     else
       respond_with_error('invalid_resource', @volunteer)

@@ -1,5 +1,9 @@
-h1 Volunteers Management
-hr
+.row.wrapper.border-bottom.white-bg.page-heading.mt-5
+  .col-lg-10
+    h2 Volunteers Management
+
+
+
 - if @volunteers.any?
   table.table.table-bordered
     thead.table-secondary
@@ -28,7 +32,9 @@ hr
           td = v.blood_group
           td = v.age
           td = v.status.humanize
-          td Edit
+          td
+            = link_to admin_volunteer_path(v) do
+              i.bi-card-text
 - else
   .alert.alert-primary
     | No volunteers found.

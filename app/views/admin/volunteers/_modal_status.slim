@@ -1,15 +1,16 @@
 /! Modal
-#statusModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1"
-  .modal-dialog
-    .modal-content
-      .modal-header
-        h1.modal-title.fs-5 Update Volunteer Status
-        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
-      .modal-body
-        = select_tag :status, options_for_select(Volunteer.statuses.keys.map{|i| [i.humanize, i]}, @volunteer.status), {class: 'form-control'}
-      .modal-footer
-        button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
-        button.btn.btn-primary.btn-save-status type="button" Save changes
+div data-controller="volunteers"
+  #statusModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h1.modal-title.fs-5 Update Volunteer Status
+          button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
+        .modal-body
+          = select_tag :status, options_for_select(Volunteer.statuses.keys.map{|i| [i.humanize, i]}, @volunteer.status), {class: 'form-control', data: {action: "change->volunteers#updateStatus"}}
+        .modal-footer
+          button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
+          button.btn.btn-primary.btn-save-status type="button" Save changes
 
 javascript:
 

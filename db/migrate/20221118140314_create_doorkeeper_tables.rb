@@ -28,7 +28,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration[7.0]
     #   t.datetime :revoked_at
     #   t.string   :scopes,            null: false, default: ''
     # end
-
+    #
     # add_index :oauth_access_grants, :token, unique: true
     # add_foreign_key(
     #   :oauth_access_grants,

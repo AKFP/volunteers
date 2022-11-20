@@ -13,5 +13,4 @@ class Volunteer < ApplicationRecord
 
   ## Associations
   belongs_to :user, optional: true
-
 end

@@ -31,7 +31,8 @@
           td = v.city
           td = v.blood_group
           td = v.age
-          td = v.status.humanize
+          td
+            = render partial: "volunteer_status", locals: {v: v}
           td
             = link_to admin_volunteer_path(v) do
               i.bi-card-text

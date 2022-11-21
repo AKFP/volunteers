@@ -1,0 +1,6 @@
+- if v.status == 'registered'
+  span.badge.rounded-pill.text-bg-primary = v.status.humanize
+- elsif v.status == 'approved'
+  span.badge.rounded-pill.text-bg-success = v.status.humanize
+- elsif v.status == 'rejected'
+  span.badge.rounded-pill.text-bg-danger = v.status.humanize

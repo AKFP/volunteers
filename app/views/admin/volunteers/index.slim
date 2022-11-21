@@ -3,6 +3,45 @@
     h2 Volunteers Management
 
 
+.row.mb-5.mt-2
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 Filters
+
+      .ibox-content
+        = search_form_for @q, url: admin_volunteers_path do |f|
+          .row
+            .col-md-3
+              label.col-form-label for="name" Name
+              = f.text_field :name_eq, placeholder: 'Name', class: 'form-control', value: @q.name_eq
+
+            .col-md-3
+              label.col-form-label for="email" Email
+              = f.text_field :email_cont, placeholder: 'Email', class: 'form-control', value: @q.email_cont
+
+            .col-md-3
+              label.col-form-label for="cnic" CNIC
+              = f.text_field :cnic_eq, placeholder: 'CNIC', class: 'form-control', value: @q.cnic_eq
+
+            .col-md-3
+              label.col-form-label for="gender" Gender
+              = f.select :gender_eq, ['Male', 'Female'], { prompt: 'Any', selected: @q.gender_eq }, { class: 'form-control' }
+
+            .col-md-3
+              label.col-form-label for="cnic" City
+              = f.text_field :city_eq, placeholder: 'City', class: 'form-control', value: @q.city_eq
+
+            .col-md-3
+              br
+              button.btn.btn-outline.btn-primary.mt-3 type="submit"
+                i.bi.bi-search
+                | &nbsp;&nbsp;Search
+
+              | &nbsp;
+              = link_to "Clear", admin_volunteers_path(), class: 'btn btn-secondary mt-3'
+
+
 
 - if @volunteers.any?
   table.table.table-bordered

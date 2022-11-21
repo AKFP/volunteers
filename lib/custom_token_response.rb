@@ -4,8 +4,8 @@ module CustomTokenResponse
     additional_data = {
       # use any global storage like RequestStore / Rails Current / etc
       'email' => u.email,
-      'userid' => @token.resource_owner_id # you have an access to the @token object
-      # any other data
+      'user_id' => @token.resource_owner_id, # you have an access to the @token object
+      'volunteer_id' => u.volunteer.try(:id)
     }
 
     # call original `#body` method and merge its result with the additional data hash

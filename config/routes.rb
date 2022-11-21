@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :volunteers, only: [:index, :show]
+    resources :volunteers, only: [:index, :show] do
+      member do
+        post :update_status
+      end
+    end
   end
 
   resources :volunteers do

@@ -2,6 +2,8 @@ class Admin::VolunteersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_volunteer
 
+  include VolunteersModule
+
   def current_ability
     @current_ability ||= VolunteerAbility.new(current_user)
   end

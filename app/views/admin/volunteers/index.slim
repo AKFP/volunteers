@@ -2,6 +2,12 @@
   .col-lg-10
     h2 Volunteers Management
 
+= link_to "Home", "/", class: 'btn btn-info'
+br
+- if user_signed_in?
+  = link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "btn btn-danger"
+- else
+  = link_to "Sign In", new_user_session_path, class: 'btn btn-primary'
 
 .row.mb-5.mt-2
   .col-lg-12

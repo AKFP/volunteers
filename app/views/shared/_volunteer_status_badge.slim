@@ -1,0 +1,9 @@
+- if v.status == 'registered'
+  - style = 'primary'
+- elsif v.status == 'approved'
+  - style = 'success'
+- else
+  - style = 'danger'
+
+small.d-inline-flex.mb-3.px-2.py-1.fw-semibold.bg-opacity-10.border.border-opacity-10.rounded-2 data-bs-target="#statusModal" data-bs-toggle="modal" class="text-#{style} bg-#{style} border-#{style}"
+  = v.status.humanize

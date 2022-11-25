@@ -12,7 +12,7 @@ Doorkeeper.configure do
   #   # Example implementation:
   #   #   User.find_by(id: session[:user_id]) || redirect_to(new_user_session_url)
   # end
-  #
+
   resource_owner_from_credentials do
     User.authenticate(params[:email], params[:password])
   end
@@ -438,6 +438,7 @@ Doorkeeper.configure do
   # skip_authorization do |resource_owner, client|
   #   client.superapp? or resource_owner.admin?
   # end
+
   skip_authorization do
     true
   end
@@ -499,4 +500,8 @@ Doorkeeper.configure do
   # WWW-Authenticate Realm (default: "Doorkeeper").
   #
   # realm "Doorkeeper"
+end
+
+Rails.application.config.to_prepare do
+  Doorkeeper::OAuth::TokenResponse.send :prepend, CustomTokenResponse
 end

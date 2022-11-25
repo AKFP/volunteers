@@ -16,6 +16,9 @@ module Api
           user = User.new(allowed_params)
 
           if user.save
+            @Volunteer = Volunteer.create(name: params[:name], email: user_params[:email], user_id: user.id)
+            user.reload
+
             render json: render_user(user, client_app), status: :ok
           else
             render json: { errors: user.errors }, status: :unprocessable_entity

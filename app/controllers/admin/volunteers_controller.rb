@@ -1,13 +1,16 @@
-class Admin::VolunteersController < ApplicationController
+class Admin::VolunteersController < AdminController
   before_action :authenticate_user!
   before_action :set_volunteer
+
+  include VolunteersModule
 
   def current_ability
     @current_ability ||= VolunteerAbility.new(current_user)
   end
 
   def index
-    @volunteers = Volunteer.all.page(params[:page])
+    @q = Volunteer.ransack(params[:q])
+    @volunteers = @q.result.page(params[:page])
     authorize! :manage, Volunteer, message: 'You are not authorized to access this page.'
   end
 

@@ -98,10 +98,9 @@
 
 
 
-    .col-md-4
-      / = render partial: 'shared/status_badge', locals: { style: 'success', custom_class: '', data: @volunteer.status.humanize }
-      small.d-inline-flex.mb-3.px-2.py-1.fw-semibold.bg-opacity-10.border.border-opacity-10.rounded-2 data-bs-target="#statusModal" data-bs-toggle="modal" class="text-success bg-success border-success"
-        = @volunteer.status.humanize
+    .col-md-4.status_placeholder
+      = render partial: 'shared/volunteer_status_badge', locals: { v: @volunteer }
 
+div data-controller="volunteers"
 
 = render partial: 'modal_status', locals: {volunteer: @volunteer}

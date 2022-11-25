@@ -1,0 +1,82 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#page-top">Alkhidmat Foundation</a>
+    <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <% if current_user&.has_role?(:super_admin) %>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%=link_to "Admin", admin_volunteers_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
+          </li>
+        <% end %>
+
+        <li class="nav-item mx-0 mx-lg-1">
+          <% if user_signed_in? %>
+            <%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
+          <% else %>
+            <%= link_to "Sign In", new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+  <div class="container d-flex align-items-center flex-column">
+    <!-- Masthead Avatar Image-->
+    <%= image_tag "volunteer_logo.svg", class: "masthead-avatar mb-5", style: "width:500px"%>
+    <!-- Masthead Heading-->
+    <h1 class="masthead-heading mb-0">Volunteers Management System</h1>
+    <!-- Icon Divider-->
+    <div class="divider-custom divider-light">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="bi bi-star-fill"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+    <!-- Masthead Subheading-->
+    <p class="masthead-subheading font-weight-light mb-0">Volunteer - Serve - Become Ambassador</p>
+  </div>
+</header>
+
+<!-- Footer-->
+<footer class="footer text-center">
+  <div class="container">
+    <div class="row">
+      <!-- Footer Location-->
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <h4 class="text-uppercase mb-4">Location</h4>
+        <p class="lead mb-0">
+          2215 John Daniel Drive
+          <br />
+          Clark, MO 65243
+        </p>
+      </div>
+      <!-- Footer Social Icons-->
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <h4 class="text-uppercase mb-4">Around the Web</h4>
+        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="bi bi-facebook"></i></a>
+        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="bi bi-twitter"></i></a>
+        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="bi bi-linkedin"></i></a>
+        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="bi bi-dribbble"></i></a>
+      </div>
+      <!-- Footer About Text-->
+      <div class="col-lg-4">
+        <h4 class="text-uppercase mb-4">About Alkhidmat</h4>
+        <p class="lead mb-0">
+          Freelance is a free to use, MIT licensed Bootstrap theme created by
+          <a href="http://startbootstrap.com">Start Bootstrap</a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Copyright Section-->
+<div class="copyright py-4 text-center text-white">
+  <div class="container"><small>Copyright &copy; Alkhidmat Foundation Pakistan 2022</small></div>
+</div>

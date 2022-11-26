@@ -1,89 +1,87 @@
-.row.wrapper.border-bottom.white-bg.page-heading.mt-5
-  .col-lg-10
-    h2 Volunteers Management
+h1.h3.mb-3 Volunteers
+.row
+  .col-12
+    .card
+      .card-header
+        h5.card-title.mb-0 Filters
+      .card-body
 
-= link_to "Home", "/", class: 'btn btn-info'
-br
-- if user_signed_in?
-  = link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "btn btn-danger"
-- else
-  = link_to "Sign In", new_user_session_path, class: 'btn btn-primary'
+        .row.mb-5.mt-2
+          .col-lg-12
+            = search_form_for @q, url: admin_volunteers_path do |f|
+              .row
+                .col-md-3
+                  label.col-form-label for="name" Name
+                  = f.text_field :name_eq, placeholder: 'Name', class: 'form-control', value: @q.name_eq
 
-.row.mb-5.mt-2
-  .col-lg-12
-    .ibox
-      .ibox-title
-        h4 Filters
+                .col-md-3
+                  label.col-form-label for="email" Email
+                  = f.text_field :email_cont, placeholder: 'Email', class: 'form-control', value: @q.email_cont
 
-      .ibox-content
-        = search_form_for @q, url: admin_volunteers_path do |f|
-          .row
-            .col-md-3
-              label.col-form-label for="name" Name
-              = f.text_field :name_eq, placeholder: 'Name', class: 'form-control', value: @q.name_eq
+                .col-md-3
+                  label.col-form-label for="cnic" CNIC
+                  = f.text_field :cnic_eq, placeholder: 'CNIC', class: 'form-control', value: @q.cnic_eq
 
-            .col-md-3
-              label.col-form-label for="email" Email
-              = f.text_field :email_cont, placeholder: 'Email', class: 'form-control', value: @q.email_cont
+                .col-md-3
+                  label.col-form-label for="gender" Gender
+                  = f.select :gender_eq, ['Male', 'Female'], { prompt: 'Any', selected: @q.gender_eq }, { class: 'form-control' }
 
-            .col-md-3
-              label.col-form-label for="cnic" CNIC
-              = f.text_field :cnic_eq, placeholder: 'CNIC', class: 'form-control', value: @q.cnic_eq
+                .col-md-3
+                  label.col-form-label for="cnic" City
+                  = f.text_field :city_eq, placeholder: 'City', class: 'form-control', value: @q.city_eq
 
-            .col-md-3
-              label.col-form-label for="gender" Gender
-              = f.select :gender_eq, ['Male', 'Female'], { prompt: 'Any', selected: @q.gender_eq }, { class: 'form-control' }
+                .col-md-3
+                  br
+                  button.btn.btn-outline.btn-primary.mt-3 type="submit"
+                    i.bi.bi-search
+                    | &nbsp;&nbsp;Search
 
-            .col-md-3
-              label.col-form-label for="cnic" City
-              = f.text_field :city_eq, placeholder: 'City', class: 'form-control', value: @q.city_eq
-
-            .col-md-3
-              br
-              button.btn.btn-outline.btn-primary.mt-3 type="submit"
-                i.bi.bi-search
-                | &nbsp;&nbsp;Search
-
-              | &nbsp;
-              = link_to "Clear", admin_volunteers_path(), class: 'btn btn-secondary mt-3'
+                  | &nbsp;
+                  = link_to "Clear", admin_volunteers_path(), class: 'btn btn-secondary mt-3'
 
 
 
-- if @volunteers.any?
-  table.table.table-bordered
-    thead.table-secondary
-      tr
-        th ID
-        th Name
-        th Email
-        th Father Name
-        th Phone
-        th CNIC
-        th City
-        th Blood Group
-        th Age
-        th Status
-        th Actions
-    tbody
-      - @volunteers.each do |v|
-        tr
-          td = v.id
-          td = v.name
-          td = v.email
-          td = v.father_name
-          td = v.phone_whatsapp
-          td = v.cnic
-          td = v.city
-          td = v.blood_group
-          td = v.age
-          td
-            = render partial: "volunteer_status", locals: {v: v}
-          td
-            = link_to admin_volunteer_path(v) do
-              i.bi-card-text
-- else
-  .alert.alert-primary
-    | No volunteers found.
+
+
+
+
+    .card.mt-2
+      .card-body
+        - if @volunteers.any?
+          table.table.table-bordered
+            thead.table-secondary
+              tr
+                th ID
+                th Name
+                th Email
+                th Father Name
+                th Phone
+                th CNIC
+                th City
+                th Blood Group
+                th Age
+                th Status
+                th Actions
+            tbody
+              - @volunteers.each do |v|
+                tr
+                  td = v.id
+                  td = v.name
+                  td = v.email
+                  td = v.father_name
+                  td = v.phone_whatsapp
+                  td = v.cnic
+                  td = v.city
+                  td = v.blood_group
+                  td = v.age
+                  td
+                    = render partial: "volunteer_status", locals: {v: v}
+                  td
+                    = link_to admin_volunteer_path(v) do
+                      i.bi-card-text
+        - else
+          .alert.alert-primary
+            | No volunteers found.
 
 br
 br

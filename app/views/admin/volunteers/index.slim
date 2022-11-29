@@ -44,13 +44,20 @@ h1.h3.mb-3 Volunteers Management
       .card-body
         ul#volunteersTab.nav.nav-tabs role="tablist"
           li.nav-item role="presentation"
-            button#registered-tab.nav-link class="#{'active' if params[:tab].blank? or params[:tab] == 'registered'}" aria-controls="registered" data-bs-target="#registered" data-bs-toggle="tab" role="tab" type="button"  Registered
+            button#registered-tab.nav-link class="#{'active' if params[:tab].blank? or params[:tab] == 'registered'}" aria-controls="registered" data-bs-target="#registered" data-bs-toggle="tab" role="tab" type="button"
+              | Registered (#{@volunteers.count})
 
           li.nav-item role="presentation"
-            button#approved-tab.nav-link class="#{'active' if params[:tab] == 'approved'}" aria-controls="approved" aria-selected="false" data-bs-target="#approved" data-bs-toggle="tab" role="tab" type="button"  Approved
+            button#approved-tab.nav-link class="#{'active' if params[:tab] == 'approved'}" aria-controls="approved" aria-selected="false" data-bs-target="#approved" data-bs-toggle="tab" role="tab" type="button"
+              | Approved (#{@approved_volunteers.count})
 
           li.nav-item role="presentation"
-            button#rejected-tab.nav-link class="#{'active' if params[:tab] == 'rejected'}" aria-controls="rejected" aria-selected="false" data-bs-target="#rejected" data-bs-toggle="tab" role="tab" type="button"  Rejected
+            button#rejected-tab.nav-link class="#{'active' if params[:tab] == 'rejected'}" aria-controls="rejected" aria-selected="false" data-bs-target="#rejected" data-bs-toggle="tab" role="tab" type="button"
+              | Rejected (#{@rejected_volunteers.count})
+
+          li.nav-item role="presentation"
+            button#ambassaors-tab.nav-link class="#{'active' if params[:tab] == 'ambassadors'}" aria-controls="ambassadors" aria-selected="false" data-bs-target="#ambassadors" data-bs-toggle="tab" role="tab" type="button"
+              | Ambassadors (#{@ambassadors.count})
 
         #volunteersTabContent.tab-content
           #registered.tab-pane.fade class="#{'active show' if params[:tab].blank? or params[:tab] == 'registered'}" aria-labelledby="registered-tab" role="tabpanel"
@@ -64,4 +71,8 @@ h1.h3.mb-3 Volunteers Management
           #rejected.tab-pane.fade class="#{'active show' if params[:tab] == 'rejected'}" aria-labelledby="rejected-tab" role="tabpanel"
             br
             = render partial: 'admin/volunteers/partials/volunteers_list', locals: { volunteers: @rejected_volunteers, tab: 'rejected' }
+
+          #ambassadors.tab-pane.fade class="#{'active show' if params[:tab] == 'ambassadors'}" aria-labelledby="ambassadors-tab" role="tabpanel"
+            br
+            = render partial: 'admin/volunteers/partials/volunteers_list', locals: { volunteers: @ambassadors, tab: 'ambassadors' }
 

@@ -4,8 +4,6 @@ class Admin::VolunteersController < AdminController
 
   include VolunteersModule
 
-  layout 'blank'
-
   def current_ability
     @current_ability ||= VolunteerAbility.new(current_user)
   end

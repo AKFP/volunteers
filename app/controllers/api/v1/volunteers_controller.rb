@@ -15,6 +15,7 @@ class Api::V1::VolunteersController < ApiController
     @volunteer = Volunteer.new(volunteer_params)
     @volunteer.user_id = current_user.id if current_user
     if @volunteer.save
+      current_user.add_role(:volunteer) if current_user
     else
       respond_with_error('invalid_resource', @volunteer)
     end

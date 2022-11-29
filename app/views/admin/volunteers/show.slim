@@ -1,105 +1,190 @@
-.row.wrapper.border-bottom.white-bg.page-heading.mt-5
-  .col-lg-10
-    h2 Volunteer Details
+.mb-3
+  h1.h3.d-inline.align-middle Profile
 
-.container.mt-5
-  .row
-    .col-md-8
-      .row
-        .col-md-3
-          strong Email:
-        .col-md-8
-          = @volunteer.email
+.row
+  .col-md-4.col-xl-3
+    .card.mb-3
+      .card-header
+        h5.card-title.mb-0 Profile Details
+      .card-body.text-center
+        = image_tag 'avatars/avatar-4.jpg', class: 'img-fluid rounded-circle mb-2', height: '128', width: '128'
+        h5.card-title.mb-0 = @volunteer.name
+        .text-muted.mb-2 = @volunteer.email
+        div.status_placeholder
+          = render partial: 'shared/volunteer_status_badge', locals: { v: @volunteer }
 
-      .row
-        .col-md-3
-          strong Name:
-        .col-md-8
-          = @volunteer.name
+      hr.my-0
+      .card-body
+        h5.h6.card-title Skills
+        - @volunteer.skills.each do |s|
+          a.badge.bg-primary.me-1.my-1 href="#"  = s
+      hr.my-0
 
-      .row
-        .col-md-3
-          strong Phone:
-        .col-md-8
-          = @volunteer.phone_whatsapp
+      .card-body
+        h5.h6.card-title About
+        ul.list-unstyled.mb-0
+          li.mb-1
+            span.feather-sm.me-1 data-feather="user"
+            strong Father Name
+            = @volunteer.father_name
+          li.mb-1
+            span.feather-sm.me-1 data-feather="arrow-up-circle"
+            strong Age
+            = @volunteer.age
 
-      .row
-        .col-md-3
-          strong CNIC:
-        .col-md-8
-          = @volunteer.cnic
+          li.mb-1
+            span.feather-sm.me-1.bi.bi-gender-ambiguous
+            strong Gender
+            = @volunteer.gender
 
-      .row
-        .col-md-3
-          strong Date of Birth:
-        .col-md-8
-          = @volunteer.dob
+          li.mb-1
+            span.feather-sm.me-1 data-feather="credit-card"
+            strong CNIC
+            = @volunteer.cnic
 
-      .row
-        .col-md-3
-          strong Age:
-        .col-md-8
-          = @volunteer.age
+          li.mb-1
+            span.feather-sm.me-1 data-feather="phone"
+            strong Phone
+            = @volunteer.phone_whatsapp
 
-      .row
-        .col-md-3
-          strong Gender:
-        .col-md-8
-          = @volunteer.gender
+          li.mb-1
+            i.bi.bi-heart-pulse
+            | &nbsp;
+            strong Blood Group
+            | &nbsp;
+            = @volunteer.blood_group
 
-      .row
-        .col-md-3
-          strong Blood Group:
-        .col-md-8
-          = @volunteer.blood_group
+          li.mb-1
+            span.feather-sm.me-1 data-feather="home"
+            strong Current Address
+            = @volunteer.current_address
+          li.mb-1
+            span.feather-sm.me-1 data-feather="briefcase"
+            strong Hometown Address
+            = @volunteer.hometown_address
+          li.mb-1
+            span.feather-sm.me-1 data-feather="map-pin"
+            strong Educational Institute
+            = @volunteer.educational_institute
 
-      .row
-        .col-md-3
-          strong City:
-        .col-md-8
-          = @volunteer.city
+          li.mb-1
+            span.feather-sm.me-1 data-feather="award"
+            strong Degree
+            = @volunteer.degree_department
 
-      .row
-        .col-md-3
-          strong Current Address:
-        .col-md-8
-          = @volunteer.current_address
+      hr.my-0
 
-      .row
-        .col-md-3
-          strong Hometown Address:
-        .col-md-8
-          = @volunteer.hometown_address
+      .card-body
+        h5.h6.card-title Professional Details
+        ul.list-unstyled.mb-0
+          - @volunteer.professional_details.each do |p|
+            li.mb-1
+              a href="#"  = p
 
-      .row
-        .col-md-3
-          strong Educational Institute:
-        .col-md-8
-          = @volunteer.educational_institute
+      hr.my-0
+      .card-body
+        h5.h6.card-title Area of Interest
+        - @volunteer.area_of_interest.each do |i|
+          a.badge.bg-primary.me-1.my-1 href="#" = i
 
-      .row
-        .col-md-3
-          strong Degree / Department:
-        .col-md-8
-          = @volunteer.degree_department
+  .col-md-8.col-xl-9
+    .card
+      .card-header
+        h5.card-title.mb-0 Activities
+      .card-body.h-100
+        .d-flex.align-items-start
+          = image_tag 'avatars/avatar-5.jpg', class: 'rounded-circle me-2', height: '36', width: '36'
 
-      .row
-        .col-md-3
-          strong Professional Details:
-        .col-md-8
-          = @volunteer.professional_details.join(" - ")
+          .flex-grow-1
+            small.float-end.text-navy 5m ago
+            strong Vanessa Tucker
+            | started following
+            strong Christina Mason
+            br
+            small.text-muted Today 7:51 pm
+            br
+        hr
+        .d-flex.align-items-start
+          = image_tag 'avatars/avatar.jpg', class: 'rounded-circle me-2', height: '36', width: '36'
+          .flex-grow-1
+            small.float-end.text-navy 30m ago
+            strong Charles Hall
+            | posted something on
+            strong Christina Mason
+            | 's timeline
+            br
+            small.text-muted Today 7:21 pm
+            .border.text-sm.text-muted.p-2.mt-1
+              | Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus
+              | pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
+            a.btn.btn-sm.btn-danger.mt-1 href="#"
+              i.feather-sm data-feather="heart"
+              | Like
+        hr
+        .d-flex.align-items-start
+          = image_tag 'avatars/avatar-4.jpg', class: 'rounded-circle me-2', height: '36', width: '36'
+          .flex-grow-1
+            small.float-end.text-navy 1h ago
+            strong Christina Mason
+            | posted a new blog
+            br
+            small.text-muted Today 6:35 pm
+        hr
+        .d-flex.align-items-start
+          = image_tag 'avatars/avatar-2.jpg', class: 'rounded-circle me-2', height: '36', width: '36'
+          .flex-grow-1
+            small.float-end.text-navy 3h ago
+            strong William Harris
+            | posted two photos on
+            strong Christina Mason
+            | timeline
+            br
+            small.text-muted Today 5:12 pm
+            .row.g-0.mt-1
+              .col-6.col-md-4.col-lg-4.col-xl-3
+                = image_tag 'photos/unsplash-1.jpg', class: 'img-fluid pe-2'
+              .col-6.col-md-4.col-lg-4.col-xl-3
+                = image_tag 'photos/unsplash-2.jpg', class: 'img-fluid pe-2'
+            a.btn.btn-sm.btn-danger.mt-1 href="#"
+              i.feather-sm data-feather="heart"
+              | Like
+        hr
+        .d-flex.align-items-start
+          = image_tag 'avatars/avatar-2.jpg', class: 'rounded-circle me-2', alt: 'William Harris', width: '36', height: '36'
+          .flex-grow-1
+            small.float-end.text-navy 1d ago
+            strong William Harris
+            | started following
+            strong Christina Mason
+            br
+            small.text-muted Yesterday 3:12 pm
+            .d-flex.align-items-start.mt-1
+              a.pe-3 href="#"
+                = image_tag 'avatars/avatar-4.jpg', class: 'rounded-circle me-2', alt: 'William Harris', width: '36', height: '36'
+              .flex-grow-1
+                .border.text-sm.text-muted.p-2.mt-1
+                  | Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
+        hr
+        .d-flex.align-items-start
+          = image_tag 'avatars/avatar-4.jpg', class: 'rounded-circle me-2', alt: 'William Harris', width: '36', height: '36'
+          .flex-grow-1
+            small.float-end.text-navy 1d ago
+            strong Christina Mason
+            | posted a new blog
+            br
+            small.text-muted Yesterday 2:43 pm
+        hr
+        .d-flex.align-items-start
+          = image_tag 'avatars/avatar.jpg', class: 'rounded-circle me-2', alt: 'William Harris', width: '36', height: '36'
+          .flex-grow-1
+            small.float-end.text-navy 1d ago
+            strong Charles Hall
+            | started following
+            strong Christina Mason
+            br
+            small.text-muted Yesterdag 1:51 pm
+        hr
 
-      .row
-        .col-md-3
-          strong Skills:
-        .col-md-8
-          = @volunteer.skills.join(" - ")
-
-
-
-
-    .col-md-4.status_placeholder
-      = render partial: 'shared/volunteer_status_badge', locals: { v: @volunteer }
 
 div data-controller="volunteers"
 

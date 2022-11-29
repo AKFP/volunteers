@@ -1,0 +1,29 @@
+nav#sidebar.sidebar.js-sidebar
+  .sidebar-content.js-simplebar
+    a.sidebar-brand href="index.html"
+      span.align-middle Alkhidmat Foundation
+    ul.sidebar-nav
+      li.sidebar-item
+        a.sidebar-link href="index.html"
+          i.align-middle data-feather="sliders"
+          / = image_tag "feather/sliders", class: 'feather-icon'
+          span.align-middle Dashboard
+      li.sidebar-item
+        a.sidebar-link href="pages-profile.html"
+          i.align-middle data-feather="user"
+          span.align-middle Profile
+      li.sidebar-item class="#{'active' if params[:controller] == 'admin/volunteers'}"
+        = link_to admin_volunteers_path, class: 'sidebar-link' do
+          i.align-middle data-feather="user-plus"
+          span.align-middle Volunteers
+
+      li.sidebar-item
+        - if user_signed_in?
+          = link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "sidebar-link" do
+            i.align-middle data-feather="log-out"
+            span.align-middle Sign Out
+
+        - else
+          = link_to new_user_session_path, class: "sidebar-link" do
+            i.align-middle data-feather="log-in"
+            span.align-middle Sign In

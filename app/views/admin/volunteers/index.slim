@@ -1,15 +1,10 @@
-.row.wrapper.border-bottom.white-bg.page-heading.mt-5
-  .col-lg-10
-    h2 Volunteers Management
-
-
-.row.mb-5.mt-2
-  .col-lg-12
-    .ibox
-      .ibox-title
-        h4 Filters
-
-      .ibox-content
+h1.h3.mb-3 Volunteers Management
+.row
+  .col-12
+    .card
+      .card-header
+        h5.card-title.mb-0 Filters
+      .card-body
         = search_form_for @q, url: admin_volunteers_path do |f|
           .row
             .col-md-3
@@ -42,42 +37,43 @@
               = link_to "Clear", admin_volunteers_path(), class: 'btn btn-secondary mt-3'
 
 
-
-- if @volunteers.any?
-  table.table.table-bordered
-    thead.table-secondary
-      tr
-        th ID
-        th Name
-        th Email
-        th Father Name
-        th Phone
-        th CNIC
-        th City
-        th Blood Group
-        th Age
-        th Status
-        th Actions
-    tbody
-      - @volunteers.each do |v|
-        tr
-          td = v.id
-          td = v.name
-          td = v.email
-          td = v.father_name
-          td = v.phone_whatsapp
-          td = v.cnic
-          td = v.city
-          td = v.blood_group
-          td = v.age
-          td
-            = render partial: "volunteer_status", locals: {v: v}
-          td
-            = link_to admin_volunteer_path(v) do
-              i.bi-card-text
-- else
-  .alert.alert-primary
-    | No volunteers found.
+.row
+  .col-12
+    - if @volunteers.any?
+      table.table.table-bordered
+        thead.table-secondary
+          tr
+            th ID
+            th Name
+            th Email
+            th Father Name
+            th Phone
+            th CNIC
+            th City
+            th Blood Group
+            th Age
+            th Status
+            th Actions
+        tbody
+          - @volunteers.each do |v|
+            tr
+              td = v.id
+              td = v.name
+              td = v.email
+              td = v.father_name
+              td = v.phone_whatsapp
+              td = v.cnic
+              td = v.city
+              td = v.blood_group
+              td = v.age
+              td
+                = render partial: "volunteer_status", locals: {v: v}
+              td
+                = link_to admin_volunteer_path(v) do
+                  i.bi-card-text
+    - else
+      .alert.alert-primary
+        | No volunteers found.
 
 br
 br

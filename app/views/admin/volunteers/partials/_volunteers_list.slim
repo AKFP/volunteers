@@ -30,6 +30,11 @@
           td
             = link_to admin_volunteer_path(v) do
               i.bi-card-text
+
+    tfooter
+      tr
+        td colspan="11"
+          = paginate volunteers, param_name: tab, params: {tab: tab}, outer_window: 3
 - else
   .alert.alert-primary
     | No volunteers found.

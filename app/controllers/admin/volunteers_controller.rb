@@ -1,5 +1,4 @@
 class Admin::VolunteersController < AdminController
-  before_action :authenticate_user!
   before_action :set_volunteer
 
   include VolunteersModule

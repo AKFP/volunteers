@@ -1,0 +1,23 @@
+h3.mb-3
+  | Add Institute
+
+.row
+  .col-12
+    .card
+      .card-body
+        = form_with url: '/admin/institutes', scope: 'institute' do |f|
+          .row
+            .col-md-12.mb-4
+              = f.label :name, "Name"
+              = f.text_field :name, class: "form-control", placeholder: 'Institute name'
+
+            .col-md-12.mb-4
+              = f.label :city_id, 'City'
+              = f.select :city_id, options_from_collection_for_select(User.all, "id", "id"), {prompt: "Select a city"}, { class: 'form-select' }
+
+            .col-md-12.mb-4
+              = f.label :address, 'Address'
+              = f.text_field :address, class: 'form-control'
+
+            .col-md-12
+              = f.submit "Create", class: 'btn btn-primary'

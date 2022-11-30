@@ -17,6 +17,11 @@ nav#sidebar.sidebar.js-sidebar
           i.align-middle data-feather="user-plus"
           span.align-middle Volunteers
 
+      li.sidebar-item class="#{'active' if params[:controller] == 'admin/institutes'}"
+        = link_to admin_institutes_path, class: 'sidebar-link' do
+          i.align-middle data-feather="book-open"
+          span.align-middle Institutes
+
       li.sidebar-item
         - if user_signed_in?
           = link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "sidebar-link" do

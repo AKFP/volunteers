@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
       return root_path()
     end
   end
+
+  def authenticate_admin
+
+  end
 end

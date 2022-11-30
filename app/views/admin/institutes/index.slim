@@ -1,0 +1,24 @@
+h3.mb-3
+  | Institutes
+  | &nbsp;
+  = link_to new_admin_institute_path, class: 'btn btn-primary btn-sm' do
+    i.align-middle data-feather="plus"
+    | Create
+
+.row
+  .col-12
+    .card
+      .card-body
+        table.table.table-bordered
+          thead.table-secondary
+            tr
+              th ID
+              th Name
+              th City
+
+          tbody
+            - @institutes.each do |i|
+              tr
+                td= i.id
+                td= i.name
+                td= i.city_id

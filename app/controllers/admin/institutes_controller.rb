@@ -14,7 +14,7 @@ class Admin::InstitutesController < AdminController
 
     respond_to do |format|
       if @institute.save
-        format.turbo_stream { redirect_to admin_institutes_path(), notice: "Institute created successfully." }
+        format.html { redirect_to admin_institutes_url(), notice: "Institute created successfully." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

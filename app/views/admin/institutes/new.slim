@@ -5,7 +5,7 @@ h3.mb-3
   .col-12
     .card
       .card-body
-        = form_with url: '/admin/institutes', scope: 'institute' do |f|
+        = form_with model: [:admin, @institute], data: {turbo: false} do |f|
           .row
             .col-md-12.mb-4
               = f.label :name, "Name"

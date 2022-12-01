@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "hello#index"
   resources :hello
+  resources :products
 
   draw :api
 
@@ -26,11 +27,3 @@ Rails.application.routes.draw do
   end
 
 end
-
-
-
-# Rails.application.routes.draw do
-#   devise_for :users, controllers: {
-#     sessions: 'users/sessions'
-#   }
-# end

@@ -15,6 +15,7 @@ h3.mb-3
               th ID
               th Name
               th City
+              th Actions
 
           tbody
             - @institutes.each do |i|
@@ -22,3 +23,9 @@ h3.mb-3
                 td= i.id
                 td= i.name
                 td= i.city_id
+                td.text-center
+                  = link_to edit_admin_institute_path(i) do
+                    i.align-middle data-feather="edit"
+
+                  = link_to admin_institute_path(i) do
+                    i.align-middle data-feather="file-text"

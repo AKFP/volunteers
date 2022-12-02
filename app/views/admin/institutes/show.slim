@@ -1,0 +1,35 @@
+h3.mb-3
+  | Institute Detail
+  | &nbsp;
+  = link_to edit_admin_institute_path, class: 'btn btn-primary btn-sm' do
+    i.align-middle data-feather="file-text"
+    | &nbsp;
+    | Edit
+
+.row
+  .col-12
+    .card
+      .card-body
+        .row
+          .col-md-5
+            / .project-info-box.mt-0
+            /   h5
+            /     | PROJECT DETAILS
+            /   p.mb-0
+            /     | Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.
+            .project-info-box
+              p
+                b
+                  | Name:
+                = " #{@institute.name}"
+              p
+                b
+                  | City:
+                = " #{@institute.city_id}"
+              p
+                b
+                  | Address:
+                = " #{@institute.address}"
+
+          .col-md-7
+            <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Lahore&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://formatjson.org/">format json</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}.gmap_iframe {width:600px!important;height:400px!important;}</style></div>

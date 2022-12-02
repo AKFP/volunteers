@@ -4,6 +4,7 @@ export default class extends Controller {
   static targets = ["name"];
 
   connect() {
+    console.log("Volunteers Controller ....");
     // this.element.textContent = "From JS";
   }
 

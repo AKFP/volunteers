@@ -22,6 +22,11 @@ nav#sidebar.sidebar.js-sidebar
           i.align-middle data-feather="book-open"
           span.align-middle Institutes
 
+      li.sidebar-item class="#{'active' if params[:controller] == 'admin/cities'}"
+        = link_to admin_cities_path, class: 'sidebar-link' do
+          i.align-middle data-feather="map-pin"
+          span.align-middle Cities
+
       li.sidebar-item
         - if user_signed_in?
           = link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "sidebar-link" do

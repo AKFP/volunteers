@@ -1,0 +1,23 @@
+h1.h3.mb-3 Cities Management
+.row
+  .col-12
+    .card
+      .card-body
+        - if @cities.any?
+          table.table.table-bordered
+            thead
+              tr
+                th ID
+                th Name
+                th Region
+            tbody
+              - @cities.each do |c|
+                tr
+                  td= c.id
+                  td= c.name
+                  td
+
+        - else
+          .alert.alert-primary
+            | No volunteers found.
+

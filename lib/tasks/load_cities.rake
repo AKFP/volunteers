@@ -1,0 +1,11 @@
+desc "Load cities seed data"
+task :load_cities => :environment do
+  cities = ["Abbaspur", "Afghan", "Athara Hazari", "Attock", "Awaran", "Badin", "Bagh", "Bahawalnagar", "Bahawalpur", "Bajaur", "Bannu", "Barnala", "Battagram", "Bhakar", "Bhimber", "Bin Qasim", "Chak Jhumra", "Chakwal", "Charsadda", "Chichawatni", "Chiniot", "Chishtian", "Dadu", "Dadyal", "Daharki", "Dalbandin", "Dera Ghazi Khan", "Digri", "Faisalabad", "Fateh Jang", "Fateh Pur", "Fort Abbas", "Gilgit", "Gojra", "Gujranwala", "Gujrat", "Hadali", "Hafizabad", "Hala", "Haripur", "Haroonabad", "Hassan Abdal", "Haveli", "Hazara", "Hazro", "Hyderabad", "Islamabad", "Jahanian", "Jand", "Jaranwala", "Jhang", "Jhelum", "Kabirwala", "Kamalia", "Kamoke", "Karachi", "Karak", "Kasur", "Khanewal", "Kharian", "Khoski", "Khushab", "Khyber Agency", "Kot Sultan", "Kotli", "Lahore", "Lakki Marwat", "Layyah", "Lodhran", "Mailsi", "Malakand", "Mansehra", "Mardan", "Mian Channu", "Mianwali", "Mirpur", "Mirpur Mathelo", "Multan", "Murree", "Muzaffarabad", "Narowal", "Nawabshah", "Neelum", "North Waziristan Agency", "Noshki", "Nowshera", "Okara", "Peshawar", "Quaidabad", "Quetta", "Rahim Yar Khan", "Rawalpindi", "Renala Khurd", "Sadiqabad", "Saeedabad", "Sahiwal", "Samundri", "Sanghar", "Ahmadpur Lumma", "Ahmadpur Sial", "Aroop", "Buner", "Chagai", "Chowk Azam", "Depalpur", "Lower Dir", "Upper Dir", "Ferozewala", "Gul Abad", "Khairpur", "Khanpur", "Khari Sharif", "Khiali Shahpura", "Kotla Arab Ali Khan", "Lyari", "Liaqatpur", "Mir Ali Mirali", "Mirpur Khas", "Mitha Tiwana", "Nandipur", "Qila Didar Singh", "Sargodha", "Sharda", "Sheikhupura", "Shorkot", "Sialkot", "Swat", "Talhar", "Tandlianwala", "Tando Adam", "Tando Allah Yar", "Tando Muhammad Khan", "Tank", "Taxila", "Timergara", "Toba Tek Singh", "Umerkot", "Vehari", "Wazirabad", "Ubauro", "Matiari", "Ghotki", "Bhalwal", "Mohmand", "Tando Jan Muhammad", "Abbottabad", "Dera Ismail Khan", "Pindigheb", "Swabi", "Shikarpur", "Sudhanoti", "Sukkur", "Tando Jam"]
+
+  City.delete_all
+  ActiveRecord::Base.connection.execute("ALTER SEQUENCE cities_id_seq RESTART WITH 1")
+  puts "Creating #{cities.size} cities."
+  cities.each do |c|
+    City.create!(name: c)
+  end
+end

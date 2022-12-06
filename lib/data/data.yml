@@ -1,4 +1,9 @@
-professional_details: ['Job Holder', 'Student']
+professional_details: [ "Employed",
+  "Unemployed",
+  "Business owner",
+  "Freelancer",
+  "Student",
+  "Other" ]
 skills: ['Leadership', 'Event Management',
          'Public Speaking',
          'Social Media',

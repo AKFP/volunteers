@@ -14,12 +14,20 @@
           </li>
         <% end %>
 
-        <li class="nav-item mx-0 mx-lg-1">
-          <% if user_signed_in? %>
+
+        <% if user_signed_in? %>
+          <li class="nav-item mx-0 mx-lg-1">
             <%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
-          <% else %>
+          </li>
+        <% else %>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to "Register", new_volunteer_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
+          </li>
+
+          <li class="nav-item mx-0 mx-lg-1">
             <%= link_to "Sign In", new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
-          <% end %>
+          </li>
+        <% end %>
         </li>
       </ul>
     </div>

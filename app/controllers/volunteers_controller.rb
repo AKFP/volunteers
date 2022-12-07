@@ -1,5 +1,6 @@
 class VolunteersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create, :thank_you]
+  layout 'public'
 
   def index
     @application = Doorkeeper::Application.where(name: 'web client').first

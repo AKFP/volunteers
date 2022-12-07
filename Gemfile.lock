@@ -105,6 +105,9 @@ GEM
       thor (>= 0.14.0, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hpricot (0.8.6)
+    html2slim (0.2.0)
+      hpricot
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -263,6 +266,7 @@ DEPENDENCIES
   devise (~> 4.8)
   doorkeeper (~> 5.6)
   figaro
+  html2slim (~> 0.2.0)
   jbuilder
   jsbundling-rails
   kaminari (~> 1.2)

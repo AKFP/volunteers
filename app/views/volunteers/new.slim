@@ -1,5 +1,5 @@
 .container
-  .py-5.text-center
+  .py-3.text-center
     h1
       | Volunteer Registration
   .row
@@ -16,18 +16,31 @@
         br
         br
         .row.g-4.bg-white.border
-          .col-sm-6
-            = f.label 'Name', class: 'form-label'
-            = f.text_field :name, class: 'form-control', placeholder: 'Name'
-          .col-sm-6
-            = f.label 'Email', class: 'form-label'
-            = f.text_field :email, class: 'form-control', placeholder: 'Email'
-          .col-sm-6
+          .col-sm-3.text-center
+            i.bi.bi-person-square style="font-size: 150px; color: #CCC"
+            br
+            = f.file_field :profile_pic, class: "form-control"
+          .col-sm-9
+            .row.g-4
+              .col-sm-12
+                h2 Basic Information
+              .col-sm-12
+                = f.label 'Name', class: 'form-label'
+                = f.text_field :name, class: 'form-control', placeholder: 'Name'
+
+              .col-sm-12
+                = f.label 'Email', class: 'form-label'
+                = f.text_field :email, class: 'form-control', placeholder: 'Email'
+
+              .col-sm-12
+                = f.label 'Contact Whatsapp', class: 'form-label'
+                = f.text_field :phone_whatsapp, class: 'form-control', placeholder: 'Contact (Whatsapp)'
+          hr
+
+          .col-sm-12
             = f.label 'Father Name', class: 'form-label'
             = f.text_field :father_name, class: 'form-control', placeholder: 'Father Name'
-          .col-sm-6
-            = f.label 'Contact Whatsapp', class: 'form-label'
-            = f.text_field :phone_whatsapp, class: 'form-control', placeholder: 'Contact (Whatsapp)'
+
           .col-sm-6
             = f.label :cnic, 'CNIC', class: 'form-label'
             = f.text_field :cnic, class: 'form-control', placeholder: 'CNIC'

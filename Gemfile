@@ -48,6 +48,15 @@ gem "slim-rails"
 # Pagination
 gem "kaminari", "~> 1.2"
 
+# Search
+gem "ransack", "~> 3.2"
+
+# Image precssing
+gem "image_processing", "~> 1.12"
+
+# AWS SDK
+gem "aws-sdk-s3", "~> 1.117"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -96,4 +105,4 @@ group :test do
   gem "webdrivers"
 end
 
-gem "ransack", "~> 3.2"
+

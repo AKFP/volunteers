@@ -13,4 +13,5 @@ class Volunteer < ApplicationRecord
 
   ## Associations
   belongs_to :user, optional: true
+  has_one_attached :profile_pic
 end

@@ -1,10 +1,10 @@
 .container
   .py-3.text-center
     h1
-      | Volunteer Registration
+      / | Volunteer Registration
   .row
     .col-md-7.col-lg-12
-      = form_with model: @volunteer, class: 'bold_labels' do |f|
+      = form_with model: @volunteer, class: 'bold_labels', data: {controller: 'volunteers'} do |f|
         - if @volunteer.errors.any?
           .row.g-4.bg-white.border
             h4
@@ -35,6 +35,7 @@
               .col-sm-12
                 = f.label 'Contact Whatsapp', class: 'form-label'
                 = f.text_field :phone_whatsapp, class: 'form-control', placeholder: 'Contact (Whatsapp)'
+                input.tginput type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput"
           hr
 
           .col-sm-12

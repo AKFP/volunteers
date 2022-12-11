@@ -1,29 +1,121 @@
-professional_details: [ "Employed",
+professional_details: [
+  "Employed",
   "Unemployed",
   "Business owner",
   "Freelancer",
   "Student",
-  "Other" ]
-skills: ['Leadership', 'Event Management',
-         'Public Speaking',
-         'Social Media',
-         'Content Writing',
-         'Marketing',
-         'Data Entry',
-         'Fundraising',
-         'Graphic Designing',
-         'Photography'
+  "Other"
+]
+
+
+skills: [
+  "Arts and craft",
+  "Auditing",
+  "Beautician",
+  "Branding & Marketing",
+  "Coaching",
+  "Community Outreach",
+  "Conflict Management",
+  "Content Writing",
+  "Cooking/Baking",
+  "Counseling",
+  "Data Analysis",
+  "Data Gathering",
+  "Database Management",
+  "Digital Media Management",
+  "Editing/proofreading",
+  "Event Management",
+  "Financial Skills",
+  "Fundraising",
+  "Goal Setting",
+  "Graphic Designing",
+  "Health/Medical Experience",
+  "Human Resource Skills",
+  "Innovation & Creativity (new Ideas)",
+  "Interviewing",
+  "Leadership",
+  "Logistics & Inventory Management",
+  "Management",
+  "Mentoring",
+  "Negotiations & Efficiency",
+  "Organizing Events",
+  "Pharmaceutical Activities",
+  "Photography",
+  "Planning & Execution",
+  "Policy Making",
+  "Presentation Skills",
+  "Problem Solving",
+  "Public Relation",
+  "Public Speaking",
+  "Sales",
+  "Sign Language Expertise",
+  "Social Media Strategy & Marketing",
+  "Stakeholder Management",
+  "Story Telling",
+  "Software development",
+  "Teaching",
+  "Team Management",
+  "Teamwork",
+  "Tech Savvy",
+  "Technical Writing",
+  "Video and Animation",
+  "Volunteer Management"
 ]
 
 area_of_interest: [
-  'Disaster Management',
-  'Heath Services',
-  'Clean Water Program',
-  'Mawakhat Microfinance Program',
-  'Orphan Care Program',
-  'Education Program',
-  'Community Services'
+  "Community Service",
+  "Distribution of Good and Ration",
+  "Alkhidmat Conference's",
+  "AKFP CMCDP Activities",
+  "Orphans Health Care Events.",
+  "Fundraising and Donation Stall's",
+  "Social Responsibility"
 ]
+
+causes: [
+  "Disaster Management",
+  "Health Services",
+  "Clean Water Program",
+  "Mawakhat Microfinance Program",
+  "Orphan Care Program",
+  "Education Program",
+  "Community Services"
+]
+
+education_level: [
+  "No Formal Education",
+  "Primary",
+  "Diploma",
+  "Secondary (Matric/O-Level)",
+  "Higher Secondary (Intermediate/A-Level)",
+  "Bachelors (14 years)",
+  "Bachelors (15 years)",
+  "Bachelors/BS (16 years)",
+  "Masters (16 years)",
+  "Masters (17 years)",
+  "Masters/MS (18 years)",
+  "M.Phil (18 Years)",
+  "Doctorate",
+  "Post Doctorate",
+  "PGD",
+  "Associate Degree",
+  "Tertiary Coursework",
+  "Vocational Course",
+  "All of the above"
+]
+
+subject_area: [
+  "Engineering",
+  "Business Management",
+  "Art & Design",
+  "Finance & Accounting",
+  "Media Studies",
+  "Computer Science & Information Technology",
+  "Social Sciences",
+  "Religious Sciences",
+  "Others"
+]
+
 marketing_medium: [
   'Social Media',
   'Google Search',

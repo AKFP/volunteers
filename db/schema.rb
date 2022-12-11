@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_022451) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_201121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -136,7 +136,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_022451) do
     t.integer "age"
     t.string "gender"
     t.string "blood_group"
-    t.string "city"
     t.string "current_address"
     t.string "hometown_address"
     t.string "educational_institute"
@@ -152,6 +151,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_022451) do
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.bigint "user_id"
+    t.string "education_level"
+    t.string "subject_area"
+    t.string "causes"
+    t.text "about_yourself"
+    t.string "facebook_link"
+    t.string "twitter_link"
+    t.string "linkedin_link"
+    t.string "instagram_link"
+    t.string "snapchat_link"
+    t.integer "city_id"
     t.index ["user_id"], name: "index_volunteers_on_user_id", unique: true
   end
 

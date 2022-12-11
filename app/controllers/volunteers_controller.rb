@@ -36,9 +36,10 @@ class VolunteersController < ApplicationController
 
   private
   def params_volunteer
-    params.require(:volunteer).permit(:email, :name, :father_name, :phone_whatsapp, :cnic, :dob, :age, :gender, :blood_group, :city,
+    params.require(:volunteer).permit(:email, :name, :father_name, :phone_whatsapp, :cnic, :dob, :age, :gender, :blood_group, :city_id,
                                       :current_address, :hometown_address, :educational_institute, :degree_department, :semester, :profile_pic,
+                                      :education_level, :subject_area, :about_yourself, :facebook_link, :twitter_link, :linkedin_link, :instagram_link, :snapchat_link,
                                       :professional_details => [], :skills => [], :area_of_interest => [], :availability => [], :availability_days => [],
-                                      :marketing_medium => [])
+                                      :marketing_medium => [], :causes => [])
   end
 end

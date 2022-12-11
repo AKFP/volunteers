@@ -3,6 +3,9 @@ class Volunteer < ApplicationRecord
   SKILLS                = YAML.load_file( 'lib/data/data.yml' )["skills"]
   AREA_OF_INTEREST      = YAML.load_file( 'lib/data/data.yml' )["area_of_interest"]
   MARKETING_MEDIUM      = YAML.load_file( 'lib/data/data.yml' )["marketing_medium"]
+  EDUCATION_LEVEL       = YAML.load_file( 'lib/data/data.yml' )["education_level"]
+  SUBJECT_AREA          = YAML.load_file( 'lib/data/data.yml' )["subject_area"]
+  CAUSES                = YAML.load_file( 'lib/data/data.yml' )["causes"]
 
   enum status: [:registered, :approved, :rejected]
 

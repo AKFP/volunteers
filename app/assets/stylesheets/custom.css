@@ -20,3 +20,7 @@
 .application-body {
   background-color: #EDEDED;
 }
+
+.bold_labels .form-label {
+  font-weight: bolder;
+}

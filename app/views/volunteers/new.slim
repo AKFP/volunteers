@@ -38,65 +38,140 @@
           hr
 
           .col-sm-12
-            = f.label 'Father Name', class: 'form-label'
+            = f.label :father_name, 'Father Name', class: 'form-label'
             = f.text_field :father_name, class: 'form-control', placeholder: 'Father Name'
+
+          .col-sm-6
+            = f.label 'Age', class: 'form-label'
+            = f.number_field :age, class: 'form-control', placeholder: 'Age'
+
+          .col-sm-6
+            = f.label :dob, 'Date of Birth', class: 'form-label'
+            = f.date_field :dob, class: 'form-control', placeholder: 'Date of Birth'
 
           .col-sm-6
             = f.label :cnic, 'CNIC', class: 'form-label'
             = f.text_field :cnic, class: 'form-control', placeholder: 'CNIC'
           .col-sm-6
             = f.label 'City', class: 'form-label'
-            = f.text_field :city, class: 'form-control', placeholder: 'City'
+            = f.select :city_id, options_from_collection_for_select(City.all.order(:name),"id","name"), {include_blank: 'Select city'}, {class:'form-select'}
           .col-sm-12
-            = f.label 'Current Address', class: 'form-label'
+            = f.label :current_address, 'Current Address', class: 'form-label'
             = f.text_field :current_address, class: 'form-control', placeholder: 'Current Address'
           .col-sm-12
-            = f.label 'Hometown Address', class: 'form-label'
+            = f.label :hoemetown_address, 'Hometown Address', class: 'form-label'
             = f.text_field :hoemetown_address, class: 'form-control', placeholder: 'Hometown Address'
           .col-sm-6
-            = f.label 'Education Institute', class: 'form-label'
+            = f.label :educational_institute, 'Education Institute', class: 'form-label'
             = f.text_field :educational_institute, class: 'form-control', placeholder: 'Education Institute'
           .col-sm-6
-            = f.label 'Degree Department', class: 'form-label'
+            = f.label :degree_department, 'Degree Department', class: 'form-label'
             = f.text_field :degree_department, class: 'form-control', placeholder: 'Degree Department'
-          .col-sm-6
-            = f.label 'Age', class: 'form-label'
-            = f.number_field :age, class: 'form-control', placeholder: 'Age'
-          .col-sm-6
-            = f.label 'Date of Birth', class: 'form-label'
-            = f.date_field :dob, class: 'form-control', placeholder: 'Date of Birth'
+
           .col-sm-6
             = f.label 'Gender', class: 'form-label'
             br
-            = render partial: 'collection_radio_buttons', locals: {collection: ['Male', 'Female'], name: 'gender', f: f}
-          .col-sm-6
-            = f.label 'Professional Details', class: 'form-label'
-            br
-            = f.select "professional_details", options_for_select(Volunteer::PROFESSIONAL_DETAILS), { }, { class: 'form-control', multiple: true }
-            /#= render partial: 'collection_check_boxes', locals: {collection: Volunteer::PROFESSIONAL_DETAILS, f: f, name: 'volunteer[professional_details][]'}
+            = render partial: 'collection_radio_buttons', locals: {collection: ['Male', 'Female', 'Not Specified'], name: 'gender', f: f}
+
           .col-sm-6
             = f.label 'Blood Group', class: 'form-label'
             br
-            = render partial: 'collection_radio_buttons', locals: { collection: ['O+','O-','A+','A-','B+','B-','AB+','AB-','Not Specified'], name: 'blood_group', f: f }
+            = f.select :blood_group, options_for_select(['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-']), {}, { class: 'form-select' }
+
           .col-sm-6
-            = f.label 'Availability', class: 'form-label'
+            = f.label :education_level, 'Education Level', class: 'form-label'
             br
-            = render partial: 'collection_check_boxes', locals: {collection: ['Full Time', 'Part Time'], f: f, name: 'volunteer[availability][]'}
+            = f.select :education_level, options_for_select(Volunteer::EDUCATION_LEVEL), {}, { class: 'form-control' }
+          .col-sm-6
+            = f.label :subject_area, 'Subject Area', class: 'form-label'
+            br
+            = f.select :subject_area, options_for_select(Volunteer::SUBJECT_AREA), {}, { class: 'form-control' }
+
+          .col-sm-6
+            = f.label :professional_details, 'Employment Status', class: 'form-label'
+            br
+            = f.select "professional_details", options_for_select(Volunteer::PROFESSIONAL_DETAILS), {}, { class: 'form-control', multiple: true }
+
           .col-sm-6
             = f.label :skills, 'Skills', class: 'form-label'
             br
-            = render partial: 'collection_check_boxes', locals: {collection: Volunteer::SKILLS, f: f, name: 'volunteer[skills][]'}
+            = f.select :skills, options_for_select(Volunteer::SKILLS), {}, { class: 'form-control', multiple: true }
+
           .col-sm-6
             = f.label :area_of_interest, 'Area of Interest', class: 'form-label'
             br
-            = render partial: 'collection_check_boxes', locals: {collection: Volunteer::AREA_OF_INTEREST, f: f, name: 'volunteer[area_of_interest][]'}
+            = f.select :area_of_interest, options_for_select(Volunteer::AREA_OF_INTEREST), { }, { class: 'form-control', multiple: true }
+
           .col-sm-6
-            = f.label 'Please mention days', class: 'form-label'
+            = f.label :causes, 'Causes', class: 'form-label'
+            br
+            = f.select :causes, options_for_select(Volunteer::CAUSES), {}, { class: 'form-control', multiple: true }
+
+          .col-sm-4
+            = f.label 'Availability', class: 'form-label'
+            br
+            = render partial: 'collection_radio_buttons', locals: { collection: ['Full Time', 'Part Time'], f: f, name: 'volunteer[availability][]' }
+
+          .col-sm-4
+            = f.label :availability_days, 'Please mention days', class: 'form-label'
             br
             = render partial: 'collection_check_boxes', locals: {collection: Date::DAYNAMES, f: f, name: 'volunteer[availability_days][]'}
-          .col-sm-6
+
+          .col-sm-4
             = f.label 'How did you come to know about us?', class: 'form-label'
             br
             = render partial: 'collection_check_boxes', locals: {collection: Volunteer::MARKETING_MEDIUM, f: f, name: 'volunteer[marketing_medium][]'}
+
+          .col-sm-12
+            = f.label :about_yourself, 'About Yourself', class: 'form-label'
+            br
+            = f.text_area :about_yourself, class: 'form-control', rows: 6
+
+
+          .col-sm-12
+            h2 Social Profiles
+
           .col-sm-6
+            label.sr-only Facebook
+            .input-group.mb-2
+              .input-group-prepend
+                .input-group-text.bg-primary
+                  i.bi.bi-facebook.text-white
+              = f.text_field :facebook_link, class: 'form-control', placeholder: 'https://facebook.com/username'
+
+          .col-sm-6
+            label.sr-only Twitter
+            .input-group.mb-2
+              .input-group-prepend
+                .input-group-text.bg-primary
+                  i.bi.bi-twitter.text-white
+              = f.text_field :twitter_link, class: 'form-control', placeholder: 'https://twitter.com/username'
+
+          .col-sm-6
+            label.sr-only LinkedIn
+            .input-group.mb-2
+              .input-group-prepend
+                .input-group-text.bg-primary
+                  i.bi.bi-linkedin.text-white
+              = f.text_field :linkedin_link, class: 'form-control', placeholder: 'https://linkedin.com/in/username'
+
+          .col-sm-6
+            label.sr-only Instagram
+            .input-group.mb-2
+              .input-group-prepend
+                .input-group-text.bg-primary
+                  i.bi.bi-instagram.text-white
+              = f.text_field :instagram_link, class: 'form-control', placeholder: 'https://instagram.com/username'
+
+          .col-sm-6
+            label.sr-only Snapchat
+            .input-group.mb-2
+              .input-group-prepend
+                .input-group-text.bg-primary
+                  i.bi.bi-snapchat.text-white
+              = f.text_field :snapchat_link, class: 'form-control', placeholder: 'https://snapchat.com/username'
+
+          .col-sm-6
+
+          .col-sm-6.py-2
             = f.submit 'Submit', class: "btn btn-primary"

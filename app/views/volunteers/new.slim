@@ -4,7 +4,7 @@
       | Volunteer Registration
   .row
     .col-md-7.col-lg-12
-      = form_with model: @volunteer, class: 'bold_labels' do |f|
+      = form_with model: @volunteer, class: 'bold_labels', data: {controller: "volunteers"} do |f|
         - if @volunteer.errors.any?
           .row.g-4.bg-white.border
             h4

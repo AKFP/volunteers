@@ -5,6 +5,26 @@ export default class extends Controller {
 
   connect() {
     console.log("Volunteers Controller ....");
+    this.emailMask($("#volunteer_email"))
+
+  }
+
+  emailMask(selector){
+    var im = new Inputmask({
+      mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+      greedy: false,
+      onBeforePaste: function (pastedValue, opts) {
+        pastedValue = pastedValue.toLowerCase();
+        return pastedValue.replace("mailto:", "");
+      },
+      definitions: {
+        '*': {
+          validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
+          casing: "lower"
+        }
+      }
+    });
+    im.mask(selector)
   }
 
   updateStatus() {

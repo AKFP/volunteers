@@ -9,6 +9,12 @@ export default class extends Controller {
 
   }
 
+  previewImage(elmt){
+    $(".default_image").hide()
+    $("#image_placeholder").show()
+    $("#image_placeholder").attr("src", window.URL.createObjectURL(elmt.target.files[0]))
+  }
+
   emailMask(selector){
     var im = new Inputmask({
       mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",

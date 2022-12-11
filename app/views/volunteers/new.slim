@@ -17,9 +17,11 @@
         br
         .row.g-4.bg-white.border
           .col-sm-3.text-center
-            i.bi.bi-person-square style="font-size: 150px; color: #CCC"
+            i.bi.bi-person-square.default_image style="font-size: 200px; color: #CCC"
+            img.image_placeholder id="image_placeholder" src="" width="200px" height="300px" style="display: none;"
             br
-            = f.file_field :profile_pic, class: "form-control"
+            / = f.file_field :profile_pic, class: "form-control inptFile", onchange: "document.getElementById('image_placeholder').src = window.URL.createObjectURL(this.files[0])"
+            = f.file_field :profile_pic, class: "form-control inptFile", data: {action: "change->volunteers#previewImage"}
           .col-sm-9
             .row.g-4
               .col-sm-12

@@ -5,7 +5,6 @@ export default class extends Controller {
 
   connect() {
     console.log("Volunteers Controller ....");
-    // this.element.textContent = "From JS";
   }
 
   updateStatus() {

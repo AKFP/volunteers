@@ -51,7 +51,7 @@
 
           .col-sm-6
             = f.label :cnic, 'CNIC', class: 'form-label'
-            = f.text_field :cnic, class: 'form-control', placeholder: 'CNIC'
+            = f.text_field :cnic, class: 'form-control', placeholder: 'CNIC', data: { inputmask: "'mask': '99999-9999999-9'" }
           .col-sm-6
             = f.label 'City', class: 'form-label'
             = f.select :city_id, options_from_collection_for_select(City.all.order(:name),"id","name"), {include_blank: 'Select city'}, {class:'form-select'}

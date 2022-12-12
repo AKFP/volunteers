@@ -8,12 +8,11 @@ json.dob                    v.dob
 json.age                    v.age
 json.gender                 v.gender
 json.blood_group            v.blood_group
-json.city                   v.city
+json.city                   v.city.name
 json.current_address        v.current_address
 json.hometown_address       v.hometown_address
 json.educational_institute  v.educational_institute
 json.degree_department      v.degree_department
-json.semester               v.semester
 json.professional_details   v.professional_details
 json.skills                 v.skills
 json.area_of_interest       v.area_of_interest

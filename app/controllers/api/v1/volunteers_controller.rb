@@ -22,7 +22,12 @@ class Api::V1::VolunteersController < ApiController
   end
 
   def update
-    @volunteer.update(volunteer_params)
+    if @volunteer
+      @volunteer.update(volunteer_params)
+    else
+      respond_with_error('invalid_resource', @volunteer)
+    end
+
   end
 
   private

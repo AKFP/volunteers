@@ -5,6 +5,7 @@ namespace :api do
     end
     resources :volunteers
     resources :static_data, only: [:index]
+    resources :cities, only: [:index]
   end
 end
 

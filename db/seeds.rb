@@ -9,3 +9,4 @@
 require File.expand_path('../seeds/roles', __FILE__)
 require File.expand_path('../seeds/users', __FILE__)
 require File.expand_path('../seeds/regions', __FILE__)
+require File.expand_path('../seeds/skills', __FILE__)

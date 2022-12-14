@@ -98,7 +98,7 @@
             = f.fields_for :skills, @skill do |f|
               = f.label :name, 'Skills', class: 'form-label'
               br
-              = f.select :name, options_from_collection_for_select(Skill.all.order(:name),"id","name"), {}, { class: 'form-control', multiple: true }
+              = f.select :name, options_from_collection_for_select(Skill.all.order(:name),"id","name"), {include_hidden: false}, { class: 'form-control', multiple: true }
 
           .col-sm-6
             = f.label :area_of_interest, 'Area of Interest', class: 'form-label'
@@ -108,7 +108,7 @@
           .col-sm-6
             = f.label :causes, 'Causes', class: 'form-label'
             br
-            = f.select :causes, options_for_select(Volunteer::CAUSES), {}, { class: 'form-control', multiple: true }
+            = f.select :causes, options_from_collection_for_select(Cause.all.order(:name), "id", "name"), {include_hidden: false}, { class: 'form-control', multiple: true }
 
           .col-sm-4
             = f.label 'Availability', class: 'form-label'

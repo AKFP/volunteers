@@ -4,7 +4,6 @@ class Volunteer < ApplicationRecord
   MARKETING_MEDIUM      = YAML.load_file( 'lib/data/data.yml' )["marketing_medium"]
   EDUCATION_LEVEL       = YAML.load_file( 'lib/data/data.yml' )["education_level"]
   SUBJECT_AREA          = YAML.load_file( 'lib/data/data.yml' )["subject_area"]
-  CAUSES                = YAML.load_file( 'lib/data/data.yml' )["causes"]
 
   enum status: [:registered, :approved, :rejected]
 
@@ -16,9 +15,13 @@ class Volunteer < ApplicationRecord
   ## Associations
   belongs_to :user, optional: true
   belongs_to :city
-  has_many :skill_volunteers
+  has_many :skill_volunteers, dependent: :destroy
   has_many :skills, through: :skill_volunteers
   has_one_attached :profile_pic
 
   accepts_nested_attributes_for :skills
+
+  def get_causes
+    Cause.where(id: self.causes)
+  end
 end

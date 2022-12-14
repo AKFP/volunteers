@@ -14,6 +14,7 @@ json.hometown_address       v.hometown_address
 json.educational_institute  v.educational_institute
 json.degree_department      v.degree_department
 json.professional_details   v.professional_details
+json.causes                 v.get_causes
 json.skills                 v.skills
 json.area_of_interest       v.area_of_interest
 json.availability           v.availability

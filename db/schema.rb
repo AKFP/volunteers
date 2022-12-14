@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_184135) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_193310) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_184135) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "causes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cities", force: :cascade do |t|
@@ -165,7 +171,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_184135) do
     t.bigint "user_id"
     t.string "education_level"
     t.string "subject_area"
-    t.string "causes"
     t.text "about_yourself"
     t.string "facebook_link"
     t.string "twitter_link"
@@ -173,6 +178,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_184135) do
     t.string "instagram_link"
     t.string "snapchat_link"
     t.integer "city_id"
+    t.integer "causes", default: [], array: true
     t.index ["user_id"], name: "index_volunteers_on_user_id", unique: true
   end
 

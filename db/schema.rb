@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_201121) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_184135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,6 +106,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_201121) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
+  create_table "skill_volunteers", force: :cascade do |t|
+    t.integer "volunteer_id"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -142,7 +155,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_201121) do
     t.string "degree_department"
     t.string "semester"
     t.string "professional_details", default: [], array: true
-    t.string "skills", default: [], array: true
     t.string "area_of_interest", default: [], array: true
     t.string "availability", default: [], array: true
     t.string "availability_days", default: [], array: true

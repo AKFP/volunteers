@@ -16,5 +16,9 @@ class Volunteer < ApplicationRecord
   ## Associations
   belongs_to :user, optional: true
   belongs_to :city
+  has_many :skill_volunteers
+  has_many :skills, through: :skill_volunteers
   has_one_attached :profile_pic
+
+  accepts_nested_attributes_for :skills
 end

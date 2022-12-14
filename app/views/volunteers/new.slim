@@ -92,12 +92,13 @@
           .col-sm-6
             = f.label :professional_details, 'Employment Status', class: 'form-label'
             br
-            = f.select "professional_details", options_for_select(Volunteer::PROFESSIONAL_DETAILS), {}, { class: 'form-control', multiple: true }
+            = f.select "professional_details", options_for_select(Volunteer::PROFESSIONAL_DETAILS), {}, { class: 'form-control' }
 
           .col-sm-6
-            = f.label :skills, 'Skills', class: 'form-label'
-            br
-            = f.select :skills, options_for_select(Volunteer::SKILLS), {}, { class: 'form-control', multiple: true }
+            = f.fields_for :skills, @skill do |f|
+              = f.label :name, 'Skills', class: 'form-label'
+              br
+              = f.select :name, options_from_collection_for_select(Skill.all.order(:name),"id","name"), {}, { class: 'form-control', multiple: true }
 
           .col-sm-6
             = f.label :area_of_interest, 'Area of Interest', class: 'form-label'

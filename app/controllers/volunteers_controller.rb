@@ -13,6 +13,7 @@ class VolunteersController < ApplicationController
   end
 
   def new
+    @skill = Skill.new
     @volunteer = Volunteer.new
   end
 
@@ -22,6 +23,8 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.save
+        @volunteer.skills = Skill.where(id: params[:volunteer][:skills_attributes]["0"]["name"])
+
         format.html { redirect_to thank_you_volunteers_path()  }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +42,7 @@ class VolunteersController < ApplicationController
     params.require(:volunteer).permit(:email, :name, :father_name, :phone_whatsapp, :cnic, :dob, :age, :gender, :blood_group, :city_id,
                                       :current_address, :hometown_address, :educational_institute, :degree_department, :semester, :profile_pic,
                                       :education_level, :subject_area, :about_yourself, :facebook_link, :twitter_link, :linkedin_link, :instagram_link, :snapchat_link,
-                                      :professional_details => [], :skills => [], :area_of_interest => [], :availability => [], :availability_days => [],
+                                      :professional_details => [], :area_of_interest => [], :availability => [], :availability_days => [],
                                       :marketing_medium => [], :causes => [])
   end
 end

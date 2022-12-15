@@ -14,7 +14,7 @@ class Volunteer < ApplicationRecord
 
   ## Associations
   belongs_to :user, optional: true
-  belongs_to :city
+  belongs_to :city, optional: true
   has_many :skill_volunteers, dependent: :destroy
   has_many :skills, through: :skill_volunteers
   has_one_attached :profile_pic

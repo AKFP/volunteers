@@ -1,0 +1,9 @@
+json.id               activity.id
+json.title            activity.title
+json.description      activity.description
+json.about_organizer  activity.about_organizer
+json.start_time       activity.start_time
+json.end_time         activity.end_time
+json.points           activity.points
+json.skills           activity.skills
+json.causes           activity.causes

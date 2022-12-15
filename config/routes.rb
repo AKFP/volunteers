@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :institutes
+    resources :activities
     resources :cities, only: [:index]
     resources :volunteers, only: [:index, :show] do
       member do

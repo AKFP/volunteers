@@ -17,6 +17,11 @@ nav#sidebar.sidebar.js-sidebar
           i.align-middle data-feather="user-plus"
           span.align-middle Volunteers
 
+      li.sidebar-item class="#{'active' if params[:controller] == 'admin/activities'}"
+        = link_to admin_activities_path, class: 'sidebar-link' do
+          i.align-middle data-feather="activity"
+          span.align-middle Activities
+
       li.sidebar-item class="#{'active' if params[:controller] == 'admin/institutes'}"
         = link_to admin_institutes_path, class: 'sidebar-link' do
           i.align-middle data-feather="book-open"

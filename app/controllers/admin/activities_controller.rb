@@ -1,4 +1,6 @@
 class Admin::ActivitiesController < AdminController
+  before_action :set_activity, only: [:show, :edit]
+
   def index
     @activities = Activity.all
   end
@@ -6,6 +8,8 @@ class Admin::ActivitiesController < AdminController
   def new
     @activity = Activity.new
   end
+
+  def show; end
 
   def create
     @activity = Activity.new(activity_params)
@@ -24,5 +28,9 @@ class Admin::ActivitiesController < AdminController
   private
   def activity_params
     params.require(:activity).permit(:title, :description, :about_organizer, :start_time, :end_time, :points, :header_image, pictures: [], causes: [], :skills => [])
+  end
+
+  def set_activity
+    @activity = Activity.find_by(id: params[:id])
   end
 end

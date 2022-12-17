@@ -23,7 +23,8 @@ h1.h3.mb-3
               - @activities.each do |a|
                 tr
                   td= a.id
-                  td= a.title
+                  td
+                    = link_to a.title, admin_activity_path(a)
                   td= a.points
                   td= formatted_date(a.start_time, "datetime")
                   td= formatted_date(a.end_time, "datetime")

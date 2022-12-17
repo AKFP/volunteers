@@ -1,0 +1,63 @@
+h3 Activity Detail
+
+.card
+  .card-header.text-center
+    - if @activity.header_image.attached?
+      = image_tag @activity.header_image
+
+    - else
+      = image_tag "header-placeholder-image", width: '800px', height: '300px', class: 'align-center'
+
+
+.card
+  .card-body
+    .row
+      .col-md-8
+        .row
+          .col-md-4.mb-2
+            strong Title
+          .col-md-8
+            = @activity.title
+
+          .col-md-4.mb-2
+            strong Points
+          .col-md-8
+            span.badge.bg-primary = @activity.points
+
+          .col-md-4.mb-4
+            strong Timings
+          .col-md-8
+            strong Start: &nbsp;
+            i.bi-alarm &nbsp;
+            = formatted_date(@activity.start_time, 'datetime')
+            br
+            strong End: &nbsp;&nbsp;&nbsp;
+            i.bi-alarm &nbsp;
+            = formatted_date(@activity.end_time, 'datetime')
+
+          .col-md-4.mb-2
+            strong Description
+          .col-md-8
+            = @activity.description
+
+          .col-md-4.mb-2
+            strong About Organizer
+          .col-md-8
+            = @activity.about_organizer
+
+          .col-md-4.mb-2
+            strong Skills Required
+          .col-md-8
+            - @activity.get_skills.each do |s|
+              span.badge.bg-primary = s.name
+              | &nbsp;
+
+          .col-md-4.mt-3
+            strong Causes
+          .col-md-8.mt-3
+            - @activity.get_causes.each do |c|
+              span.badge.bg-primary = c.name
+              | &nbsp;
+
+      .col-md-4
+

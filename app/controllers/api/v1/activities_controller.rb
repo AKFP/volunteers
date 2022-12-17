@@ -1,6 +1,10 @@
 class Api::V1::ActivitiesController < ApiController
   include ApiErrorHandling
 
+  def index
+    @activities = Activity.all
+  end
+
   def create
     @activity = Activity.new(activity_params)
 

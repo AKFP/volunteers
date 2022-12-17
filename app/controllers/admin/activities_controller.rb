@@ -23,6 +23,6 @@ class Admin::ActivitiesController < AdminController
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :description, :about_organizer, :start_time, :end_time, :points, :header_image, causes: [], :skills => [])
+    params.require(:activity).permit(:title, :description, :about_organizer, :start_time, :end_time, :points, :header_image, pictures: [], causes: [], :skills => [])
   end
 end

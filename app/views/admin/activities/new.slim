@@ -47,6 +47,9 @@ h3.mb-3
               = f.file_field :header_image, class: "form-control inptFile"
 
             .col-md-6
+              = f.label :pictures, "Activity Pictures"
+              br
+              = f.file_field :pictures, multiple: true, class: "form-control"
 
             .col-sm-6.py-2
               = f.submit 'Submit', class: "btn btn-primary"

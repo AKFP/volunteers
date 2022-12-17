@@ -12,7 +12,6 @@ class Admin::ActivitiesController < AdminController
 
     respond_to do |format|
       if @activity.save
-        # @activity.skills = Skill.where(id: params[:volunteer][:skills_attributes]["0"]["name"])
 
         format.html { redirect_to admin_activities_path(), notice: "Activity created successfully."  }
       else
@@ -24,6 +23,6 @@ class Admin::ActivitiesController < AdminController
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :description, :about_organizer, :start_time, :end_time, :points, causes: [], :skills => [])
+    params.require(:activity).permit(:title, :description, :about_organizer, :start_time, :end_time, :points, :header_image, causes: [], :skills => [])
   end
 end

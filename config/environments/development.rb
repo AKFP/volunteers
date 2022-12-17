@@ -56,6 +56,20 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+  config.action_mailer.delivery_method = :smtp
+  # host = 'aocp-dev.attribes.com' #replace with your own url
+  config.action_mailer.default_url_options = { host: ENV["smtp_host"] }
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => ENV["smtp_address"],
+    :port                 => 587,
+    :user_name            => ENV["smtp_username"],
+    :password             => ENV["smtp_password"],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
@@ -68,3 +82,4 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end
+

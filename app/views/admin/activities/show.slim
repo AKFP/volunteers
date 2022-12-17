@@ -1,4 +1,9 @@
-h3 Activity Detail
+h3
+  | Activity Detail &nbsp;
+  = link_to edit_admin_activity_path(@activity), class: 'btn btn-primary btn-sm' do
+    i.align-middle data-feather="edit"
+    | &nbsp; Edit
+
 
 .card
   .card-header.text-center
@@ -60,4 +65,16 @@ h3 Activity Detail
               | &nbsp;
 
       .col-md-4
+        - if @activity.pictures.attached?
+          .row
+            - @activity.pictures.each do |p|
+              .col-md-4 data-controller="activities" id="picture_#{p.id}"
+                figure.figure
+                  = image_tag p, width: "200px", class: "figure-img img-fluid rounded"
+                  figcaption.figure-caption.text-end.mb-1
+                    = link_to delete_picture_admin_activities_path(id: p.id), id: "p_#{p.id}", data: { action: "click->activities#delete_picture" } do
+                      i.align-middle data-feather="trash-2"
+        - else
+          | No
 
+  / data-action="mouseover->activities#hover_trash_icon"

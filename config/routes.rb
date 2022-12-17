@@ -6,15 +6,18 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "hello#index"
   resources :hello
-  resources :products
 
   draw :api
 
 
   namespace :admin do
     resources :institutes
-    resources :activities
     resources :cities, only: [:index]
+    resources :activities do
+      collection do
+        delete :delete_picture
+      end
+    end
     resources :volunteers, only: [:index, :show] do
       member do
         post :update_status

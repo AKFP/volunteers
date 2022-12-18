@@ -23,10 +23,12 @@
     .col-md-6.mb-4
       = f.label :start_time, "Start Time", class: 'form-label'
       = f.datetime_field :start_time, class: "form-control"
+      small.form-text.text-muted Please enter time in 24H format.
 
     .col-md-6.mb-4
       = f.label :end_time, "End Time", class: 'form-label'
       = f.datetime_field :end_time, class: "form-control"
+      small.form-text.text-muted Please enter time in 24H format.
 
     .col-md-6.mb-4
       = f.label :skills, 'Skills', class: 'form-label'
@@ -37,6 +39,16 @@
       = f.label :causes, 'Causes', class: 'form-label'
       br
       = f.select :causes, options_from_collection_for_select(Cause.all.order(:name), "id", "name"), { include_hidden: false }, { class: 'form-control', multiple: true }
+
+    .col-md-6.mb-4
+      = f.label :latitude, "Latitude"
+      br
+      = f.text_field :latitude, class: "form-control", placeholder: "Latitude e.g. 24.8806064"
+
+    .col-md-6.mb-4
+      = f.label :longitude, "Longitude"
+      br
+      = f.text_field :longitude, class: "form-control", placeholder: "Longitude e.g. 67.1560979"
 
     .col-md-6
       = f.label :header_image, "Header Image"
@@ -53,7 +65,7 @@
         - @activity.pictures.each do |p|
           = f.hidden_field :pictures, multiple: true, value: p.signed_id
 
-    .col-sm-6.py-2
+    .col-sm-6.mt-4
       = f.submit 'Submit', class: "btn btn-primary"
       - unless @activity.new_record?
         | &nbsp;

@@ -12,3 +12,7 @@ class Activity < ApplicationRecord
     Cause.where(id: self.causes)
   end
 end
+
+
+# Activity.where('skills && ARRAY[?]::integer[]', [23,2]).size
+# Activity.where('skills @> ARRAY[?]::integer[]', [23,2]).size

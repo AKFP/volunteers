@@ -11,3 +11,7 @@ end
 json.causes do
   json.array! activity.get_causes, partial: 'api/v1/causes/cause', as: :c
 end
+
+json.venues do
+  json.array! activity.venues, partial: 'api/v1/activities/venue', as: :v
+end

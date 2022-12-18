@@ -17,10 +17,10 @@ class Admin::ActivitiesController < AdminController
 
   def create
     @activity = Activity.new(activity_params)
+    @activity.venues = [{latitude: params[:activity][:latitude], longitude: params[:activity][:longitude]}]
 
     respond_to do |format|
       if @activity.save
-
         format.html { redirect_to admin_activities_path(), notice: "Activity created successfully."  }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -14,8 +14,10 @@ module Api
 
           allowed_params = user_params.except(:client_id)
           user = User.new(allowed_params)
+          user.activation_code = SecureRandom.random_number(100000)
 
           if user.save
+            UserMailer.welcome_email(user).deliver_later
             @Volunteer = Volunteer.create(name: params[:name], email: user_params[:email], user_id: user.id)
             user.reload
 

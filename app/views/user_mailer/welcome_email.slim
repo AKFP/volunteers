@@ -1,6 +1,7 @@
 h1
-  | Welcome to vdm.alkhidmat.org,
-  = @user.email
+  | Welcome to Alkhidmat Volunteers,
+p
+  | Your activation code is <strong>#{@user.activation_code}</strong>.
 p
   |  You have successfully signed up to vdm.alkhidmat.org, your username is:
   = @user.email

@@ -1,6 +1,8 @@
 class Api::V1::VolunteersController < ApiController
   include ApiErrorHandling
 
+  skip_before_action :doorkeeper_authorize!, only: [:verify_email]
+
   before_action :set_volunteer, only: [:show, :update]
 
   def index
@@ -28,6 +30,13 @@ class Api::V1::VolunteersController < ApiController
       respond_with_error('invalid_resource', @volunteer)
     end
 
+  end
+
+  def verify_email
+    return if params[:activation_code].blank?
+
+    @user = User.where(activation_code: params[:activation_code], email: params[:email]).last
+    @user.update(is_email_verified: true, activation_code: nil) if @user
   end
 
   private

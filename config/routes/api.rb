@@ -3,7 +3,11 @@ namespace :api do
     scope :users, module: :users do
       post '/', to: 'registrations#create', as: :user_registration
     end
-    resources :volunteers
+    resources :volunteers do
+      collection do
+        post :verify_email
+      end
+    end
     resources :activities
     resources :static_data, only: [:index]
     resources :cities, only: [:index]

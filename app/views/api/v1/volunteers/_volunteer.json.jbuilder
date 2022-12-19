@@ -8,7 +8,7 @@ json.dob                    v.dob
 json.age                    v.age
 json.gender                 v.gender
 json.blood_group            v.blood_group
-json.city                   v.city.name
+json.city                   v.city.try(:name)
 json.current_address        v.current_address
 json.hometown_address       v.hometown_address
 json.educational_institute  v.educational_institute

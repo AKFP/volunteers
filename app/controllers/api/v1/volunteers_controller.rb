@@ -16,6 +16,8 @@ class Api::V1::VolunteersController < ApiController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     @volunteer.user_id = current_user.id if current_user
+    city = City.find_by(name: params[:city])
+    @volunteer.update_attribute(:city_id, city.id) unless city.nil?
     if @volunteer.save
       current_user.add_role(:volunteer) if current_user
     else
@@ -26,10 +28,11 @@ class Api::V1::VolunteersController < ApiController
   def update
     if @volunteer
       @volunteer.update(volunteer_params)
+      city = City.find_by(name: params[:city])
+      @volunteer.update_attribute(:city_id, city.id) unless city.nil?
     else
       respond_with_error('invalid_resource', @volunteer)
     end
-
   end
 
   def verify_email

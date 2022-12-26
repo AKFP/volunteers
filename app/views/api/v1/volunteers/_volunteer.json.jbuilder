@@ -20,3 +20,4 @@ json.area_of_interest       v.area_of_interest
 json.availability           v.availability
 json.availability_days      v.availability_days
 json.marketing_medium       v.marketing_medium
+json.picture_url            v.picture_url

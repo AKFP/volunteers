@@ -45,9 +45,10 @@ class Api::V1::VolunteersController < ApiController
   private
   def volunteer_params
     params.require(:volunteer).permit(:email, :name, :father_name, :phone_whatsapp, :cnic, :dob, :age, :gender, :blood_group, :city, :picture_url,
-                                      :current_address, :hometown_address, :educational_institute, :degree_department, :semester, causes: [],
-                                      :professional_details => [], :skills => [], :area_of_interest => [], :availability => [], :availability_days => [],
-                                      :marketing_medium => [])
+                                      :current_address, :hometown_address, :educational_institute, :degree_department, :semester,
+                                      
+                                      :causes: [], :professional_details => [], :skills => [], :area_of_interest => [], :availability => [],
+                                      :availability_days => [], :marketing_medium => [])
   end
 
   def set_volunteer

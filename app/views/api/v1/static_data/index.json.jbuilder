@@ -7,4 +7,5 @@ json.data do
   json.marketing_medium       @data["marketing_medium"]
   json.skills                 Skill.all.order(:name).map{|s| {id: s.id, name: s.name}}
   json.causes                 Cause.all.order(:name).map{|c| {id: c.id, name: c.name}}
+  json.cities                 City.all.order(:name).map{|c| {id: c.id, name: c.name}}
 end

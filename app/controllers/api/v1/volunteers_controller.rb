@@ -18,7 +18,7 @@ class Api::V1::VolunteersController < ApiController
     @volunteer.user_id = current_user.id if current_user
     if @volunteer.save
       current_user.add_role(:volunteer) if current_user
-      @volunteer.set_skills volunteer_params[:skills]
+      @volunteer.set_skills params[:skills]
     else
       respond_with_error('invalid_resource', @volunteer)
     end
@@ -27,7 +27,8 @@ class Api::V1::VolunteersController < ApiController
   def update
     if @volunteer
       @volunteer.update(volunteer_params)
-      @volunteer.set_skills volunteer_params[:skills]
+      
+      @volunteer.set_skills params[:skills]
     else
       respond_with_error('invalid_resource', @volunteer)
     end

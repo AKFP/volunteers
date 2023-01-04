@@ -11,6 +11,8 @@ namespace :api do
     resources :activities
     resources :static_data, only: [:index]
     resources :cities, only: [:index]
+    resources :causes, only: [:index]
+    resources :skills, only: [:index]
   end
 end
 

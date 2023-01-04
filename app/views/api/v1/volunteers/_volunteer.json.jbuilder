@@ -16,7 +16,7 @@ json.educational_institute      v.educational_institute
 json.degree_department          v.degree_department
 json.professional_details       v.professional_details
 json.causes                     v.get_causes
-json.skills                     v.skills.pluck(:ids)
+json.skills                     v.skill_volunteer_ids
 json.area_of_interest           v.area_of_interest
 json.availability               v.availability
 json.availability_days          v.availability_days

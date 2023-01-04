@@ -27,7 +27,7 @@ class Volunteer < ApplicationRecord
   end
 
   def set_skills skill_ids
-    self.skill_ids skill_ids
+    self.skill_ids=skill_ids
   end
 
   def complete_personal?

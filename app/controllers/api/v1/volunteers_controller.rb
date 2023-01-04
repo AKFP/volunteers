@@ -16,8 +16,6 @@ class Api::V1::VolunteersController < ApiController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     @volunteer.user_id = current_user.id if current_user
-    city = City.find_by(name: params[:city])
-    @volunteer.update_attribute(:city_id, city.id) unless city.nil?
     if @volunteer.save
       current_user.add_role(:volunteer) if current_user
     else
@@ -28,8 +26,6 @@ class Api::V1::VolunteersController < ApiController
   def update
     if @volunteer
       @volunteer.update(volunteer_params)
-      city = City.find_by(name: params[:city])
-      @volunteer.update_attribute(:city_id, city.id) unless city.nil?
     else
       respond_with_error('invalid_resource', @volunteer)
     end
@@ -45,7 +41,7 @@ class Api::V1::VolunteersController < ApiController
   private
   def volunteer_params
     params.require(:volunteer).permit(:email, :name, :father_name, :phone_whatsapp, :cnic, :dob, :age, :gender, :blood_group,
-                                      :city, :picture_url, :current_address, :hometown_address, :educational_institute,
+                                      :city_id, :picture_url, :current_address, :hometown_address, :educational_institute,
                                       :degree_department, :semester, :education_level, :subject_area, #:education_status,
                                       :about_yourself, :facebook_link, :twitter_link, :linkedin_link, :instagram_link, :snapchat_link,
                                       :causes => [], :professional_details => [], :skills => [], :area_of_interest => [],

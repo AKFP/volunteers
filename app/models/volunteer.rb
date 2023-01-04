@@ -39,7 +39,7 @@ class Volunteer < ApplicationRecord
   end
 
   def complete_socialization?
-    !about_yourself.blank? and !facebook_link.blank? and !twitter_link.blank? and !linkedin_link.blank? and !instagram_link.blank? and !snapchat_link.blank?
+    !about_yourself.blank?# and !facebook_link.blank? and !twitter_link.blank? and !linkedin_link.blank? and !instagram_link.blank? and !snapchat_link.blank?
   end
 
   def complete?

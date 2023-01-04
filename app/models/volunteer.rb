@@ -26,20 +26,29 @@ class Volunteer < ApplicationRecord
     Cause.where(id: self.causes)
   end
 
+  def set_skills skill_ids
+    self.skill_ids skill_ids
+  end
+
   def complete_personal?
-    !picture_url.blank? and !name.blank? and !email.blank? and !phone_whatsapp.blank? and !father_name.blank? and !dob.blank? and !cnic.blank? and !gender.blank? and !blood_group.blank? and !city.blank? and !current_address.blank? and !hometown_address.blank?
+    !picture_url.blank? and !name.blank? and !email.blank? and !phone_whatsapp.blank? and 
+    !father_name.blank? and !dob.blank? and !cnic.blank? and !gender.blank? and !blood_group.blank? and 
+    !city.blank? and !current_address.blank? and !hometown_address.blank?
   end
 
   def complete_professional?
-    !educational_institute.blank? and !degree_department.blank? and !education_level.blank? and !subject_area.blank? #and !education_status.nil?
+    !educational_institute.blank? and !degree_department.blank? and !education_level.blank? and 
+    !subject_area.blank? #and !education_status.nil?
   end
 
   def complete_time_investment?
-    skill_volunteers.any? and !area_of_interest.blank? and get_causes.any? and !availability.blank? and !availability_days.blank? and marketing_medium.any?
+    skill_volunteers.any? and !area_of_interest.blank? and get_causes.any? and !availability.blank? and 
+    !availability_days.blank? and marketing_medium.any?
   end
 
   def complete_socialization?
-    !about_yourself.blank?# and !facebook_link.blank? and !twitter_link.blank? and !linkedin_link.blank? and !instagram_link.blank? and !snapchat_link.blank?
+    !about_yourself.blank?# and !facebook_link.blank? and !twitter_link.blank? and !linkedin_link.blank? and 
+    # !instagram_link.blank? and !snapchat_link.blank?
   end
 
   def complete?

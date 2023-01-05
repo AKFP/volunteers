@@ -9,10 +9,10 @@ class Admin::VolunteersController < AdminController
 
   def index
     @q                    = Volunteer.ransack(params[:q])
-    @volunteers           = @q.result.registered.page(params[:registered])
-    @approved_volunteers  = Volunteer.approved.page(params[:approved])
-    @rejected_volunteers  = Volunteer.rejected.page(params[:rejected])
-    @ambassadors          = Volunteer.where(id: User.with_role(:ambassador).pluck(:id)).page(params[:ambassador])
+    @volunteers           = @q.result.registered.order("id DESC").page(params[:registered])
+    @approved_volunteers  = @q.result.approved.order("id DESC").page(params[:approved])
+    @rejected_volunteers  = @q.result.rejected.order("id DESC").page(params[:rejected])
+    @ambassadors          = @q.result.where(id: User.with_role(:ambassador).pluck(:id)).order("id DESC").page(params[:ambassador])
 
     authorize! :manage, Volunteer, message: 'You are not authorized to access this page.'
   end

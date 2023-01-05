@@ -7,7 +7,7 @@
       .card-header
         h5.card-title.mb-0 Profile Details
       .card-body.text-center
-        = image_tag 'avatars/avatar-4.jpg', class: 'img-fluid rounded-circle mb-2', height: '128', width: '128'
+        = image_tag "#{@volunteer.picture_url}", class: 'img-fluid rounded-circle mb-2', height: '128', width: '128'
         h5.card-title.mb-0 = @volunteer.name
         .text-muted.mb-2 = @volunteer.email
         div.status_placeholder

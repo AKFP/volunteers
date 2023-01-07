@@ -4,6 +4,6 @@ class Api::V1::CitiesController < ApiController
   skip_before_action :doorkeeper_authorize!, only: [:index]
 
   def index
-    @cities = City.all
+    @cities = City.all.order("name")
   end
 end

@@ -17,7 +17,7 @@
       .card-body
         h5.h6.card-title Skills
         - @volunteer.skills.each do |s|
-          a.badge.bg-primary.me-1.my-1 href="#"  = s
+          a.badge.bg-primary.me-1.my-1 href="#"  = s.name
       hr.my-0
 
       .card-body
@@ -91,7 +91,8 @@
     .card
       .card-header
         h5.card-title.mb-0 Activities
-      .card-body.h-100
+        h7  No Recent Activites
+      / .card-body.h-100
         .d-flex.align-items-start
           = image_tag 'avatars/avatar-5.jpg', class: 'rounded-circle me-2', height: '36', width: '36'
 

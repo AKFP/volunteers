@@ -165,9 +165,9 @@
                 </a>
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                  <%= image_tag "#{current_user.has_role?(:super_admin) ? "avatars/admin_avatar.png" : current_user.volunteer.picture_url}", class: 'avatar img-fluid rounded me-1' %>
+                  <%= image_tag "#{current_user.has_any_role?(:super_admin, :admin) ? "avatars/admin_avatar.png" : current_user.volunteer.picture_url}", class: 'avatar img-fluid rounded me-1' %>
                   <span class="text-dark">
-                    <%= current_user.has_role?(:super_admin) ? "Super Admin" : current_user.volunteer.name %>
+                    <%= current_user.has_any_role?(:super_admin, :admin) ? "Super Admin" : current_user.volunteer.name %>
                   </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">

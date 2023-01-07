@@ -4,7 +4,8 @@ module Roles
   roles = [
     "Super Admin",
     "Ambassador",
-    "Volunteer"
+    "Volunteer",
+    "Admin"
   ]
   Role.delete_all
   ActiveRecord::Base.connection.execute("ALTER SEQUENCE roles_id_seq RESTART WITH 1")

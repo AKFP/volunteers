@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   ## Associations
   has_one :volunteer
+  belongs_to :region, optional: true
 
   def self.authenticate(email, password)
     user = User.find_for_authentication(email: email)

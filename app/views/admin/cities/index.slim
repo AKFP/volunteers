@@ -15,7 +15,7 @@ h1.h3.mb-3 Cities Management
                 tr
                   td= c.id
                   td= c.name
-                  td
+                  td= c.region.try(:name)
 
         - else
           .alert.alert-primary

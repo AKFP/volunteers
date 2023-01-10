@@ -25,6 +25,8 @@ class Volunteer < ApplicationRecord
   ## Scopes
   scope :filter_by_region_id,   -> (region_id)   { where city_id:  Region.find_by(id: region_id).cities.pluck(:id)   }
   
+  @data = YAML.load_file( 'lib/data/data.yml' )
+
   def get_causes
     Cause.where(id: self.causes)
   end
@@ -56,5 +58,9 @@ class Volunteer < ApplicationRecord
 
   def complete?
     complete_personal? and complete_professional? and complete_time_investment? and complete_socialization?
+  end
+
+  def self.misc_data
+    @data
   end
 end

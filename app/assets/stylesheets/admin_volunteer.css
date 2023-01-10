@@ -1,0 +1,24 @@
+/* collapsable admin volunteer details */
+details {
+  user-select: none;
+}
+
+details>summary span.feather-sm {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s;
+  margin-left: auto;
+}
+
+details[open] summary span.feather-sm {
+  transform: rotate(180deg);
+}
+
+summary {
+  display: flex;
+  cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}

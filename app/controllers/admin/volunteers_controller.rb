@@ -45,7 +45,7 @@ class Admin::VolunteersController < AdminController
   def volunteer_params
     params.require(:volunteer).permit(:email, :name, :father_name, :phone_whatsapp, :cnic, :dob, :age, :gender, :blood_group,
                                       :city_id, :picture_url, :current_address, :hometown_address, :educational_institute,
-                                      :degree_department, :semester, :education_level, :subject_area, :availability_hours, #:education_status,
+                                      :degree_department, :semester, :education_level, :subject_area, :availability_hours, # :status, #:education_status,
                                       :about_yourself, :facebook_link, :twitter_link, :linkedin_link, :instagram_link, :snapchat_link,
                                       :causes => [], :professional_details => [], :skills => [], :area_of_interest => [],
                                       :availability => [], :availability_days => [], :marketing_medium => [])

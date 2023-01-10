@@ -1,0 +1,141 @@
+.mb-3
+  h1.h3.d-inline.align-middle Volunteer Update
+
+= form_with model: @volunteer, url: admin_volunteer_path, method: :put, class: 'edit_volunteer' do |f|
+  .form-group.row
+    label.col-sm-1.col-form-label Email
+    .col-sm-3
+      = f.text_field :email
+    label.col-sm-1.col-form-label Name
+    .col-sm-3
+      = f.text_field :name
+    label.col-sm-1.col-form-label Father Name
+    .col-sm-3
+      = f.text_field :father_name
+  .hr-line-dashed
+
+  .form-group.row
+    label.col-sm-1.col-form-label Whats App
+    .col-sm-3
+      = f.text_field :phone_whatsapp
+    label.col-sm-1.col-form-label CNIC
+    .col-sm-3
+      = f.text_field :cnic
+    label.col-sm-1.col-form-label DOB
+    .col-sm-3
+      = f.text_field :dob
+  .hr-line-dashed
+
+  .form-group.row
+    label.col-sm-1.col-form-label Age
+    .col-sm-3
+      = f.text_field :age
+    label.col-sm-1.col-form-label Gender
+    .col-sm-3
+      = f.text_field :gender
+    label.col-sm-1.col-form-label Blood Group
+    .col-sm-3
+      = f.text_field :blood_group
+  .hr-line-dashed
+
+  .form-group.row
+    label.col-sm-1.col-form-label Current Address
+    .col-sm-3
+      = f.text_field :current_address
+    label.col-sm-1.col-form-label Home Town Address
+    .col-sm-3
+      = f.text_field :hometown_address
+    label.col-sm-1.col-form-label Educational Institute
+    .col-sm-3
+      = f.text_field :educational_institute
+  .hr-line-dashed
+
+  .form-group.row
+    label.col-sm-1.col-form-label Degree Department
+    .col-sm-3
+      = f.text_field :degree_department
+    label.col-sm-1.col-form-label Semester
+    .col-sm-3
+      = f.text_field :semester
+    label.col-sm-1.col-form-label Professional Details
+    .col-sm-3
+      = f.select :professional_details, Volunteer.misc_data["professional_details"], {}, {multiple: true} 
+  .hr-line-dashed
+
+  .form-group.row
+    label.col-sm-1.col-form-label Area of Interest
+    .col-sm-3
+      = f.select :area_of_interest, Volunteer.misc_data["area_of_interest"], {}, {multiple: true} 
+    label.col-sm-1.col-form-label Availability
+    .col-sm-3
+      = f.select :availability, [["Part Time", "Part Time"], ["Full Time", "Full Time"]], {}, {multiple: true} 
+    label.col-sm-1.col-form-label Availability Days
+    .col-sm-3
+      = f.select :availability_days, [["Monday", "Monday"], ["Tuesday", "Tuesday"], ["Wedday", "Wedday"], ["Thursday", "Thursday"], ["Friday", "Friday"], ["Sunday", "Sunday"], []], {}, {multiple: true} 
+  .hr-line-dashed
+
+  .form-group.row
+    label.col-sm-1.col-form-label Marketing Medium
+    .col-sm-3
+      = f.select :marketing_medium, Volunteer.misc_data["marketing_medium"], {}, {multiple: true} 
+    / label.col-sm-1.col-form-label Status
+    / .col-sm-3
+    /   = f.select :status, Volunteer.statuses
+    label.col-sm-1.col-form-label Educational Level
+    .col-sm-3
+      = f.select :educational_level, Volunteer.misc_data["education_level"]
+  .hr-line-dashed
+
+  .form-group.row
+    label.col-sm-1.col-form-label Subject Area
+    .col-sm-3
+      = f.text_field :subject_area
+    label.col-sm-1.col-form-label About Yourself
+    .col-sm-3
+      = f.text_field :about_yourself
+    label.col-sm-1.col-form-label Facebook Link
+    .col-sm-3
+      = f.text_field :facebook_link
+  .hr-line-dashed
+
+
+  .form-group.row
+    label.col-sm-1.col-form-label Twitter Link
+    .col-sm-3
+      = f.text_field :twitter_link
+    label.col-sm-1.col-form-label LinkedIn Link
+    .col-sm-3
+      = f.text_field :linkedin_link
+    label.col-sm-1.col-form-label Instagram Link
+    .col-sm-3
+      = f.text_field :instagram_link
+  .hr-line-dashed
+
+
+  .form-group.row
+    label.col-sm-1.col-form-label Snapchat Link
+    .col-sm-3
+      = f.text_field :snapchat_link
+    label.col-sm-1.col-form-label City ID
+    .col-sm-3
+      = f.select :city_id, City.all.order('name asc').map{|c| [c.name, c.id]}
+    label.col-sm-1.col-form-label Causes
+    .col-sm-3
+      = f.select :causes, Cause.all.map{|c| [c.name, c.id]}, {}, {multiple: true} 
+  .hr-line-dashed
+
+  .form-group.row
+    label.col-sm-1.col-form-label Picture URL
+    .col-sm-3
+      = f.text_field :picture_url
+    label.col-sm-1.col-form-label Availability Hours
+    .col-sm-3
+      = f.number_field(:availability_hours, in: 1..24, step: 1)
+  .hr-line-dashed
+
+  .form-group.row
+    .col-sm-2.col-form-label
+      = f.submit "Save", {class: "ladda-button btn btn-primary btn_admin_info", data: {style: "expand-right"}} do
+        span.ladda-label Save
+        span.ladda-spinner
+        .ladda-progress style=("width: 69px;")

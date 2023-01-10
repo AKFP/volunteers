@@ -23,8 +23,31 @@ class Admin::VolunteersController < AdminController
   def show
   end
 
+  def edit
+  end
+  
+  def update
+    if @volunteer
+      @volunteer.update(volunteer_params)      
+      @volunteer.set_skills params[:skills]
+    else
+      respond_with_error('invalid_resource', @volunteer)
+    end
+
+    redirect_back(fallback_location: admin_volunteer_path(@volunteer))
+  end
+
   private
   def set_volunteer
     @volunteer = Volunteer.find_by(id: params[:id])
+  end
+
+  def volunteer_params
+    params.require(:volunteer).permit(:email, :name, :father_name, :phone_whatsapp, :cnic, :dob, :age, :gender, :blood_group,
+                                      :city_id, :picture_url, :current_address, :hometown_address, :educational_institute,
+                                      :degree_department, :semester, :education_level, :subject_area, :availability_hours, #:education_status,
+                                      :about_yourself, :facebook_link, :twitter_link, :linkedin_link, :instagram_link, :snapchat_link,
+                                      :causes => [], :professional_details => [], :skills => [], :area_of_interest => [],
+                                      :availability => [], :availability_days => [], :marketing_medium => [])
   end
 end

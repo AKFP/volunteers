@@ -19,14 +19,15 @@
         - @volunteer.skills.each do |s|
           a.badge.bg-primary.me-1.my-1 href="#"  = s.name
       hr.my-0
-
       .card-body
         h5.h6.card-title About
         ul.list-unstyled.mb-0
-          li.mb-1
-            span.feather-sm.me-1 data-feather="user"
-            strong Father Name
-            = @volunteer.father_name
+          .details
+            li.mb-1.summary
+              span.feather-sm.me-1 data-feather="user"
+              strong Father Name
+            p
+              = @volunteer.father_name
           li.mb-1
             span.feather-sm.me-1 data-feather="arrow-up-circle"
             strong Age

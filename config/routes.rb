@@ -18,7 +18,7 @@ Rails.application.routes.draw do
         delete :delete_picture
       end
     end
-    resources :volunteers, only: [:index, :show] do
+    resources :volunteers, only: [:index, :show, :edit, :update] do
       member do
         post :update_status
       end

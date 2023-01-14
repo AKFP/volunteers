@@ -56,6 +56,7 @@ gem "image_processing", "~> 1.12"
 
 # AWS SDK
 gem "aws-sdk-s3", "~> 1.117"
+gem "roo"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

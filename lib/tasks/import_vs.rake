@@ -9,14 +9,14 @@ task :import_vs => :environment do
     data.each_with_index do |row, idx|
       next if [0].include?(idx) # skip header
   
-      child_data = Hash[[headers, row].transpose] # create hash from headers and cells
-      u = User.find_or_initialize_by(email: child_data["email"])
-      puts child_data["email"].split('@')[0]
-      u.password = child_data["email"].split('@')[0]
+      volunteer_data = Hash[[headers, row].transpose] # create hash from headers and cells
+      u = User.find_or_initialize_by(email: volunteer_data["email"])
+      puts volunteer_data["email"].split('@')[0]
+      u.password = volunteer_data["email"].split('@')[0]
       
-      Volunteer.create!(child_data) if u.save
+      Volunteer.create!(volunteer_data) if u.save
       
       puts idx+1
-      puts child_data
+      puts volunteer_data
     end
 end

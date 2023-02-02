@@ -13,9 +13,7 @@ task :import_vs => :environment do
     u = User.find_or_initialize_by(email: volunteer_data["email"])
     puts volunteer_data["email"]
     u.password = volunteer_data["email"]
-    # puts volunteer_data["email"].split('@')[0]
-    # u.password = volunteer_data["email"].split('@')[0]
-    
+
     puts "Saving User"
     if u.save
       puts "Updating Volunteer"
@@ -25,11 +23,12 @@ task :import_vs => :environment do
       volunteer_data["city_id"] = City.find_by(name: volunteer_data["city"]).try(:id)
       volunteer_data.delete("city")
       
-      volunteer_data["subject_area"]      = volunteer_data["subject_area"].split(',')     if volunteer_data["subject_area"].present?
-      volunteer_data["area_of_interest"]  = volunteer_data["area_of_interest"].split(',') if volunteer_data["area_of_interest"].present?
-      volunteer_data["availibilty"]       = volunteer_data["availibilty"].split(',')      if volunteer_data["availibilty"].present?
-      volunteer_data["availibilty_days"]  = volunteer_data["availibilty_days"].split(',') if volunteer_data["availibilty_days"].present?
-      volunteer_data["marketing_medium"]  = volunteer_data["marketing_medium"].split(',') if volunteer_data["marketing_medium"].present?
+      volunteer_data["professional_details"] = volunteer_data["professional_details"].nil? ? [] : volunteer_data["professional_details"].split(',')
+      volunteer_data["subject_area"]      = volunteer_data["subject_area"].nil?       ? [] : volunteer_data["subject_area"].split(',')
+      volunteer_data["area_of_interest"]  = volunteer_data["area_of_interest"].nil?   ? [] : volunteer_data["area_of_interest"].split(',')
+      volunteer_data["availability"]      = volunteer_data["availability"].nil?       ? [] : volunteer_data["availability"].split(',')
+      volunteer_data["availability_days"] = volunteer_data["availability_days"].nil?  ? [] : volunteer_data["availability_days"].split(',')
+      volunteer_data["marketing_medium"]  = volunteer_data["marketing_medium"].nil?   ? [] : volunteer_data["marketing_medium"].split(',')
 
       volunteer = u.volunteer || Volunteer.find_by(email: volunteer_data["email"])
 

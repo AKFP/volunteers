@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_18_192658) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_024322) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_18_192658) do
     t.datetime "updated_at", null: false
     t.text "job_description"
     t.jsonb "venues", default: {}, null: false
+  end
+
+  create_table "activity_registrations", force: :cascade do |t|
+    t.bigint "activity_id"
+    t.bigint "volunteer_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_activity_registrations_on_activity_id"
+    t.index ["volunteer_id"], name: "index_activity_registrations_on_volunteer_id"
   end
 
   create_table "causes", force: :cascade do |t|
@@ -150,6 +160,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_18_192658) do
     t.datetime "updated_at", null: false
     t.integer "activation_code"
     t.boolean "is_email_verified", default: false
+    t.integer "region_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -196,6 +207,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_18_192658) do
     t.string "snapchat_link"
     t.integer "city_id"
     t.integer "causes", default: [], array: true
+    t.string "picture_url"
+    t.integer "availability_hours"
     t.index ["user_id"], name: "index_volunteers_on_user_id", unique: true
   end
 

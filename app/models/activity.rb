@@ -1,5 +1,9 @@
 class Activity < ApplicationRecord
 
+  ## Associations
+  has_many :activity_registrations
+  has_many :volunteers, through: :activity_registrations
+
   ## File Attachments
   has_one_attached :header_image
   has_many_attached :pictures

@@ -20,6 +20,11 @@ class Volunteer < ApplicationRecord
   has_many :skills, through: :skill_volunteers
   has_one_attached :profile_pic
 
+  has_many :activity_registrations
+  has_many :activities, through: :activity_registrations
+
+
+
   accepts_nested_attributes_for :skills
 
   ## Scopes

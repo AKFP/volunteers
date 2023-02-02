@@ -8,7 +8,11 @@ namespace :api do
         post :verify_email
       end
     end
-    resources :activities
+    resources :activities do
+      member do
+        post :register
+      end
+    end
     resources :static_data, only: [:index]
     resources :cities, only: [:index]
     resources :causes, only: [:index]

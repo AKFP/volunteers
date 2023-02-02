@@ -1,5 +1,6 @@
 desc "Import Volunteers"
 task :import_vs => :environment do
+
   data = Roo::Spreadsheet.open('public/volunteers.xlsx')
   data.default_sheet = data.sheets[0]
   puts data.row(1)

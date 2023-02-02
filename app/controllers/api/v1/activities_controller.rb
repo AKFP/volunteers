@@ -1,10 +1,11 @@
 class Api::V1::ActivitiesController < ApiController
   include ApiErrorHandling
+  include Api::ActivitiesModule
 
   before_action :set_activity, only: [:show]
 
   def index
-    @activities = Activity.all
+    @activities = Activity.all.order("start_time asc")
   end
 
   def show; end

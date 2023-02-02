@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :institutes
+    resources :dashboard
     resources :cities, only: [:index]
     resources :activities do
       collection do

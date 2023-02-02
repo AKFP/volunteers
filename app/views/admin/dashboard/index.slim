@@ -1,0 +1,84 @@
+h1 Dashboard
+
+.row
+  .col-xl-6.col-xxl-5.d-flex
+    .w-100
+      .row
+        .col-sm-6
+          .card
+            .card-body
+              .row
+                .col.mt-0
+                  h5.card-title
+                    | Sales
+                .col-auto
+                  .stat.text-primary
+                    i.align-middle[data-feather="truck"]
+              h1.mt-1.mb-3
+                | 2.382
+              .mb-0
+                span.text-danger
+                  i.mdi.mdi-arrow-bottom-right
+                  |  -3.65%
+                span.text-muted
+                  | Since last week
+          .card
+            .card-body
+              .row
+                .col.mt-0
+                  h5.card-title
+                    | Visitors
+                .col-auto
+                  .stat.text-primary
+                    i.align-middle[data-feather="users"]
+              h1.mt-1.mb-3
+                | 14.212
+              .mb-0
+                span.text-success
+                  i.mdi.mdi-arrow-bottom-right
+                  |  5.25%
+                span.text-muted
+                  | Since last week
+        .col-sm-6
+          .card
+            .card-body
+              .row
+                .col.mt-0
+                  h5.card-title
+                    | Earnings
+                .col-auto
+                  .stat.text-primary
+                    i.align-middle[data-feather="dollar-sign"]
+              h1.mt-1.mb-3
+                | $21.300
+              .mb-0
+                span.text-success
+                  i.mdi.mdi-arrow-bottom-right
+                  |  6.65%
+                span.text-muted
+                  | Since last week
+          .card
+            .card-body
+              .row
+                .col.mt-0
+                  h5.card-title
+                    | Orders
+                .col-auto
+                  .stat.text-primary
+                    i.align-middle[data-feather="shopping-cart"]
+              h1.mt-1.mb-3
+                | 64
+              .mb-0
+                span.text-danger
+                  i.mdi.mdi-arrow-bottom-right
+                  |  -2.25%
+                span.text-muted
+                  | Since last week
+  .col-xl-6.col-xxl-7
+    .card.flex-fill.w-100
+      .card-header
+        h5.card-title.mb-0
+          | Recent Movement
+      .card-body.py-3
+        .chart.chart-sm
+          canvas#chartjs-dashboard-line

@@ -22,5 +22,10 @@
 }
 
 .bold_labels .form-label {
-  font-weight: bolder;
+  font-weight: bo-lder;
+  color: #1abc9c;
+}
+
+.h1_white {
+  color: #fff;
 }

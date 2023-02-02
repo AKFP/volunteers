@@ -1,6 +1,6 @@
 .container
   .py-3.text-center
-    h1
+    h1.h1_white
       | Volunteer Registration
   .row
     .col-md-7.col-lg-12
@@ -25,7 +25,7 @@
           .col-sm-9
             .row.g-4
               .col-sm-12
-                h2 Basic Information
+                / h2 Basic Information
               .col-sm-12
                 = f.label 'Name', class: 'form-label'
                 = f.text_field :name, class: 'form-control', placeholder: 'Name'
@@ -135,46 +135,46 @@
             h2 Social Profiles
 
           .col-sm-6
-            label.sr-only Facebook
+            label.sr-only.form-label Facebook
             .input-group.mb-2
               .input-group-prepend
-                .input-group-text.bg-primary
+                .input-group-text.bg-success
                   i.bi.bi-facebook.text-white
               = f.text_field :facebook_link, class: 'form-control', placeholder: 'https://facebook.com/username'
 
           .col-sm-6
-            label.sr-only Twitter
+            label.sr-only.form-label Twitter
             .input-group.mb-2
               .input-group-prepend
-                .input-group-text.bg-primary
+                .input-group-text.bg-success
                   i.bi.bi-twitter.text-white
               = f.text_field :twitter_link, class: 'form-control', placeholder: 'https://twitter.com/username'
 
           .col-sm-6
-            label.sr-only LinkedIn
+            label.sr-only.form-label LinkedIn
             .input-group.mb-2
               .input-group-prepend
-                .input-group-text.bg-primary
+                .input-group-text.bg-success
                   i.bi.bi-linkedin.text-white
               = f.text_field :linkedin_link, class: 'form-control', placeholder: 'https://linkedin.com/in/username'
 
           .col-sm-6
-            label.sr-only Instagram
+            label.sr-only.form-label Instagram
             .input-group.mb-2
               .input-group-prepend
-                .input-group-text.bg-primary
+                .input-group-text.bg-success
                   i.bi.bi-instagram.text-white
               = f.text_field :instagram_link, class: 'form-control', placeholder: 'https://instagram.com/username'
 
           .col-sm-6
-            label.sr-only Snapchat
+            label.sr-only.form-label Snapchat
             .input-group.mb-2
               .input-group-prepend
-                .input-group-text.bg-primary
+                .input-group-text.bg-success
                   i.bi.bi-snapchat.text-white
               = f.text_field :snapchat_link, class: 'form-control', placeholder: 'https://snapchat.com/username'
 
           .col-sm-6
 
           .col-sm-6.py-2
-            = f.submit 'Submit', class: "btn btn-primary"
+            = f.submit 'Submit', class: "btn btn-success"

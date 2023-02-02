@@ -16,7 +16,9 @@ task :import_vs => :environment do
     # puts volunteer_data["email"].split('@')[0]
     # u.password = volunteer_data["email"].split('@')[0]
     
+    puts "Saving User"
     if u.save
+      puts "Updating Volunteer"
       volunteer_data["user_id"] = u.id      
       volunteer_data["status"].eql?("Ambassador") ? u.add_role(:ambassador) : u.add_role(:volunteer)
       volunteer_data["status"]  = 'approved'
@@ -30,7 +32,10 @@ task :import_vs => :environment do
       volunteer_data["marketing_medium"]  = volunteer_data["marketing_medium"].split(',') if volunteer_data["marketing_medium"].present?
 
       volunteer = u.volunteer || Volunteer.find_by(email: volunteer_data["email"])
-      Volunteer.upsert(volunteer_data) if !volunteer.nil? and !volunteer.update!(volunteer_data)
+
+      !volunteer.nil? ? volunteer.update!(volunteer_data) : Volunteer.create(volunteer_data)
+      
+      puts "Updated Volunteers"
     end
 
     puts idx+1

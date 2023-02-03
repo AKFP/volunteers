@@ -57,19 +57,19 @@ h1.h3.mb-3 Volunteers Management
         ul#volunteersTab.nav.nav-tabs role="tablist"
           li.nav-item role="presentation"
             button#registered-tab.nav-link class="#{'active' if params[:tab].blank? or params[:tab] == 'registered'}" aria-controls="registered" data-bs-target="#registered" data-bs-toggle="tab" role="tab" type="button"
-              | Registered (#{})
+              | Registered (#{@volunteers.total_count})
 
           li.nav-item role="presentation"
             button#approved-tab.nav-link class="#{'active' if params[:tab] == 'approved'}" aria-controls="approved" aria-selected="false" data-bs-target="#approved" data-bs-toggle="tab" role="tab" type="button"
-              | Approved (#{})
+              | Approved (#{@approved_volunteers.total_count})
 
           li.nav-item role="presentation"
             button#rejected-tab.nav-link class="#{'active' if params[:tab] == 'rejected'}" aria-controls="rejected" aria-selected="false" data-bs-target="#rejected" data-bs-toggle="tab" role="tab" type="button"
-              | Rejected (#{})
+              | Rejected (#{@rejected_volunteers.total_count})
 
           li.nav-item role="presentation"
             button#ambassaors-tab.nav-link class="#{'active' if params[:tab] == 'ambassadors'}" aria-controls="ambassadors" aria-selected="false" data-bs-target="#ambassadors" data-bs-toggle="tab" role="tab" type="button"
-              | Ambassadors (#{})
+              | Ambassadors (#{@ambassadors.total_count})
 
         #volunteersTabContent.tab-content
           #registered.tab-pane.fade class="#{'active show' if params[:tab].blank? or params[:tab] == 'registered'}" aria-labelledby="registered-tab" role="tabpanel"

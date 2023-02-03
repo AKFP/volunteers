@@ -9,7 +9,7 @@ h1.h3.mb-3 Volunteers Management
           .row
             .col-md-3
               label.col-form-label for="name" Name
-              = f.text_field :name_eq, placeholder: 'Name', class: 'form-control', value: @q.name_eq
+              = f.text_field :name_cont, placeholder: 'Name', class: 'form-control', value: @q.name_cont
 
             .col-md-3
               label.col-form-label for="email" Email
@@ -24,8 +24,20 @@ h1.h3.mb-3 Volunteers Management
               = f.select :gender_eq, ['Male', 'Female'], { prompt: 'Any', selected: @q.gender_eq }, { class: 'form-control' }
 
             .col-md-3
-              label.col-form-label for="cnic" City
-              = f.text_field :city_id_eq, placeholder: 'City', class: 'form-control', value: @q.city_id_eq
+              label.col-form-label for="city" City
+              = f.text_field :city_name_cont, placeholder: 'City', class: 'form-control', value: @q.city_name_cont
+
+            .col-md-3
+              label.col-form-label for="blood_group" Blood Group
+              = f.text_field :blood_group_cont, placeholder: 'Blood Group', class: 'form-control', value: @q.blood_group_cont
+
+            .col-md-3
+              label.col-form-label for="phone_whatsapp" Phone Number
+              = f.text_field :phone_whatsapp_cont, placeholder: 'Phone Number', class: 'form-control', value: @q.phone_whatsapp_cont
+
+            / .col-md-3
+            /   label.col-form-label for="" Causes
+            /   = f.select :causes, options_from_collection_for_select(Cause.all.order(:name), "id", "name"), {include_hidden: false}, { class: 'form-control', multiple: true }
 
             .col-md-3
               br
@@ -45,19 +57,19 @@ h1.h3.mb-3 Volunteers Management
         ul#volunteersTab.nav.nav-tabs role="tablist"
           li.nav-item role="presentation"
             button#registered-tab.nav-link class="#{'active' if params[:tab].blank? or params[:tab] == 'registered'}" aria-controls="registered" data-bs-target="#registered" data-bs-toggle="tab" role="tab" type="button"
-              | Registered (#{@volunteers.count})
+              | Registered (#{})
 
           li.nav-item role="presentation"
             button#approved-tab.nav-link class="#{'active' if params[:tab] == 'approved'}" aria-controls="approved" aria-selected="false" data-bs-target="#approved" data-bs-toggle="tab" role="tab" type="button"
-              | Approved (#{@approved_volunteers.count})
+              | Approved (#{})
 
           li.nav-item role="presentation"
             button#rejected-tab.nav-link class="#{'active' if params[:tab] == 'rejected'}" aria-controls="rejected" aria-selected="false" data-bs-target="#rejected" data-bs-toggle="tab" role="tab" type="button"
-              | Rejected (#{@rejected_volunteers.count})
+              | Rejected (#{})
 
           li.nav-item role="presentation"
             button#ambassaors-tab.nav-link class="#{'active' if params[:tab] == 'ambassadors'}" aria-controls="ambassadors" aria-selected="false" data-bs-target="#ambassadors" data-bs-toggle="tab" role="tab" type="button"
-              | Ambassadors (#{@ambassadors.count})
+              | Ambassadors (#{})
 
         #volunteersTabContent.tab-content
           #registered.tab-pane.fade class="#{'active show' if params[:tab].blank? or params[:tab] == 'registered'}" aria-labelledby="registered-tab" role="tabpanel"

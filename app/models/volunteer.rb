@@ -29,6 +29,7 @@ class Volunteer < ApplicationRecord
 
   ## Scopes
   scope :filter_by_region_id,   -> (region_id)   { where city_id:  Region.find_by(id: region_id).cities.pluck(:id)   }
+  scope :by_causes, -> (arr_causes) { where( 'causes && ARRAY[?]::integer[]', arr_causes ) }
   
   @data = YAML.load_file( 'lib/data/data.yml' )
 

@@ -18,5 +18,5 @@ class Activity < ApplicationRecord
 end
 
 
-# Activity.where('skills && ARRAY[?]::integer[]', [23,2]).size
+# Activity.where('skills && ARRAY[?]::integer[]', [23,2]).size  ## Match any of it
 # Activity.where('skills @> ARRAY[?]::integer[]', [23,2]).size

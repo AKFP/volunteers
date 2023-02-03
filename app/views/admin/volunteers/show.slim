@@ -91,8 +91,9 @@
   .col-md-8.col-xl-9
     .card
       .card-header
-        h5.card-title.mb-0 Activities
-        h7  No Recent Activites
+        h5.card-title.mb-0 Causes
+        - @volunteer.get_causes.each do |c|
+          a.badge.bg-primary.me-1.my-1 href="#" = c.name
       / .card-body.h-100
         .d-flex.align-items-start
           = image_tag 'avatars/avatar-5.jpg', class: 'rounded-circle me-2', height: '36', width: '36'

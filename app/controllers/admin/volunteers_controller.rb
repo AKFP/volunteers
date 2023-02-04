@@ -16,11 +16,11 @@ class Admin::VolunteersController < AdminController
     @search               = @q.result
     # @search               = @q.result.by_causes(params[:q]["causes"]) if params[:q]
     @search               = @q.result.filter_by_region_id(current_user.region_id) if current_user.has_role?(:admin)
-
-    @volunteers           = @search.registered.page(params[:registered])
-    @approved_volunteers  = @search.approved.page(params[:approved])
-    @rejected_volunteers  = @search.rejected.page(params[:rejected])
-    @ambassadors          = @search.where(id: User.with_role(:ambassador).pluck(:id)).page(params[:ambassador])
+    
+    @volunteers           = @search.registered.order("created_at desc").page(params[:registered])
+    @approved_volunteers  = @search.approved.order("created_at desc").page(params[:approved])
+    @rejected_volunteers  = @search.rejected.order("created_at desc").page(params[:rejected])
+    @ambassadors          = @search.where(id: User.with_role(:ambassador).pluck(:id)).order("created_at desc").page(params[:ambassador])
 
     authorize! :manage, Volunteer, message: 'You are not authorized to access this page.'
   end

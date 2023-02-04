@@ -23,7 +23,7 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.save
-        @volunteer.skills = Skill.where(id: params[:volunteer][:skills_attributes]["0"]["name"])
+        @volunteer.skills = Skill.where(id: params[:volunteer][:skills_attributes]["0"]["name"]) if !params[:volunteer][:skills_attributes].nil?
 
         format.html { redirect_to thank_you_volunteers_path()  }
       else

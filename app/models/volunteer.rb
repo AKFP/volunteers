@@ -14,7 +14,7 @@ class Volunteer < ApplicationRecord
   validates :user_id, uniqueness: { message: 'A user can have only one volunteer profile.', allow_blank: true }
 
   ## Associations
-  belongs_to :user, optional: true
+  belongs_to :user, optional: true, dependent: :destroy
   belongs_to :city, optional: true
   has_many :skill_volunteers, dependent: :destroy
   has_many :skills, through: :skill_volunteers
@@ -35,6 +35,12 @@ class Volunteer < ApplicationRecord
 
   def get_causes
     Cause.where(id: self.causes)
+  end
+
+  def assign_new_user
+    u = User.create!(email: self.email, password: (0...8).map { ('a'..'z').to_a[rand(26)] }.join)
+    u.add_role(:volunteer)
+    self.user_id = u.id
   end
 
   def set_skills skill_ids

@@ -15,19 +15,23 @@ class VolunteersController < ApplicationController
   def new
     @skill = Skill.new
     @volunteer = Volunteer.new
+    @volunteer.build_user
   end
 
   def create
     @volunteer = Volunteer.new(params_volunteer)
-    @volunteer.user_id = current_user.id if current_user
+    @volunteer.build_user(email: params_volunteer[:email], password: (0...8).map { ('a'..'z').to_a[rand(26)] }.join)
 
     respond_to do |format|
-      if @volunteer.save
+      if @volunteer.user.valid? && @volunteer.save
+        @volunteer.user.add_role(:volunteer)
         @volunteer.skills = Skill.where(id: params[:volunteer][:skills_attributes]["0"]["name"]) if !params[:volunteer][:skills_attributes].nil?
+
+        UserMailer.welcome_email(@volunteer.user).deliver_later
 
         format.html { redirect_to thank_you_volunteers_path()  }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity, notice: "Volunteer could not be registered." }
       end
 
     end

@@ -1,4 +1,7 @@
-json.array! @cities do |c|
-  json.id c.id
-  json.name c.name
+json.success      true
+json.messages     ["Cities list."]
+json.data do
+  json.array! @cities do |c|
+    json.partial! "city", c: c
+  end
 end

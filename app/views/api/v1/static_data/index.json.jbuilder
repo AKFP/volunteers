@@ -5,7 +5,16 @@ json.data do
   json.education_level        @data["education_level"]
   json.subject_area           @data["subject_area"]
   json.marketing_medium       @data["marketing_medium"]
-  json.skills                 Skill.all.order(:name).map{|s| {id: s.id, name: s.name}}
-  json.causes                 Cause.all.order(:name).map{|c| {id: c.id, name: c.name}}
-  json.cities                 City.all.order(:name).map{|c| {id: c.id, name: c.name}}
+  json.skills do
+    json.partial! "api/v1/skills/skill", collection: @skills, as: :s
+  end
+
+  json.causes do
+    json.partial! "api/v1/causes/cause", collection: @causes, as: :c
+  end
+
+  json.cities do
+    json.partial! "api/v1/cities/city", collection: @cities, as: :c
+  end
+
 end

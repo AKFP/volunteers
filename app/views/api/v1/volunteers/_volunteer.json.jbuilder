@@ -8,15 +8,22 @@ json.dob                        v.dob
 json.age                        v.age
 json.gender                     v.gender
 json.blood_group                v.blood_group
-json.city_id                    v.city_id
-json.city                       v.city.try(:name)
+
+json.city do
+  json.partial! "api/v1/cities/city", c: v.city, cached: true
+end
 json.current_address            v.current_address
 json.hometown_address           v.hometown_address
 json.educational_institute      v.educational_institute
 json.degree_department          v.degree_department
 json.professional_details       v.professional_details
-json.causes                     v.get_causes.pluck(:id)
-json.skills                     v.skills.pluck(:id)
+json.causes do
+  json.partial! "api/v1/causes/cause", collection: v.get_causes, as: :c, cached: true
+end
+json.skills do
+  json.partial! "api/v1/skills/skill", collection: v.skills, as: :s, cached: true
+end
+
 json.area_of_interest           v.area_of_interest
 json.availability               v.availability
 json.availability_days          v.availability_days

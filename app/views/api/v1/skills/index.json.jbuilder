@@ -1,4 +1,7 @@
-json.array! @skills do |s|
-  json.id s.id
-  json.name s.name
+json.success      true
+json.messages     ["Skills list."]
+json.data do
+  json.array! @skills do |s|
+    json.partial! "skill", s: s
+  end
 end

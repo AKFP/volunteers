@@ -6,7 +6,7 @@ class Api::V1::VolunteersController < ApiController
   before_action :set_volunteer, only: [:show, :update]
 
   def index
-    @volunteers = Volunteer.all
+    @volunteers = Volunteer.includes(:city, :skills).all
   end
 
   def show
@@ -52,6 +52,6 @@ class Api::V1::VolunteersController < ApiController
   end
 
   def set_volunteer
-    @volunteer = Volunteer.find_by(id: params[:id])
+    @volunteer = Volunteer.includes(:city, :skills).find_by(id: params[:id])
   end
 end

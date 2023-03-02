@@ -10,18 +10,21 @@ json.gender                     v.gender
 json.blood_group                v.blood_group
 
 json.city do
-  json.partial! "api/v1/cities/city", c: v.city, cached: true
+  json.id     v.city.try(:id)
+  json.name   v.city.try(:name)
 end
 json.current_address            v.current_address
 json.hometown_address           v.hometown_address
 json.educational_institute      v.educational_institute
 json.degree_department          v.degree_department
 json.professional_details       v.professional_details
+
 json.causes do
-  json.partial! "api/v1/causes/cause", collection: v.get_causes, as: :c, cached: true
+  json.array! v.get_causes, :id, :name
 end
+
 json.skills do
-  json.partial! "api/v1/skills/skill", collection: v.skills, as: :s, cached: true
+  json.array! v.skills, :id, :name
 end
 
 json.area_of_interest           v.area_of_interest

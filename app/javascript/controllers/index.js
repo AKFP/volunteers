@@ -7,9 +7,11 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 import VolunteersController from "./volunteers_controller"
 import PlacesController from "./places_controller"
-import ActivitesController from "./activities_controller"
+import ActivitiesController from "./activities_controller"
+import DashboardController from "./dashboard_controller"
 
 application.register("hello", HelloController)
 application.register("volunteers", VolunteersController)
 application.register("places", PlacesController)
-application.register("activities", ActivitesController)
+application.register("activities", ActivitiesController)
+application.register("dashboard", DashboardController)

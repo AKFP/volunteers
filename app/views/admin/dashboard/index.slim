@@ -69,12 +69,6 @@ h1 Dashboard
                     i.align-middle[data-feather="users"]
               h1.mt-1.mb-3
                 = Volunteer.count
-  / .mb-0
-  /   span.text-success
-  /     i.mdi.mdi-arrow-bottom-right
-  /     |  6.65%
-  /   span.text-muted
-  /     | Since last week
 
   .col-xl-3.col-xxl-3
     .card
@@ -82,19 +76,24 @@ h1 Dashboard
         .row
           .col.mt-0
             h5.card-title
-              | Registered in last 24 Hours
+              | Registered in last <span class="msg">24 Hours</span>
           .col-auto
             .stat.text-primary
               i.align-middle[data-feather="shield"]
         h1.mt-1.mb-3
-          = @last_24_hours
+          .count-placeholder
+            = @last_24_hours
 
-        .mb-0
-          span.text-muted
-            |  24H
+        .mb-0 data-controller="dashboard"
+          span
+            a.lnk_count.text-success data-count="#{@last_24_hours}" data-text="24 Hours" data-action="click->dashboard#updateRegistrationCount"
+              |  24H
           | &nbsp;|&nbsp;
-          span.text-success
-            |  1W
+          span
+            a.lnk_count.text-muted data-count="#{@last_week}" data-text="Week" data-action="click->dashboard#updateRegistrationCount"
+              |  1W
           | &nbsp;|&nbsp;
-          span.text-success
-            |  1M
+          span
+            a.lnk_count.text-muted data-count="#{@last_month}" data-text="Month" data-action="click->dashboard#updateRegistrationCount"
+              |  1M
+

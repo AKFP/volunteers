@@ -76,11 +76,25 @@ h1 Dashboard
   /   span.text-muted
   /     | Since last week
 
-  .col-xl-6.col-xxl-7
-    .card.flex-fill.w-100
-      .card-header
-        h5.card-title.mb-0
-          | Recent Movement
-      .card-body.py-3
-        .chart.chart-sm
-          canvas#chartjs-dashboard-line
+  .col-xl-3.col-xxl-3
+    .card
+      .card-body
+        .row
+          .col.mt-0
+            h5.card-title
+              | Registered in last 24 Hours
+          .col-auto
+            .stat.text-primary
+              i.align-middle[data-feather="shield"]
+        h1.mt-1.mb-3
+          = @last_24_hours
+
+        .mb-0
+          span.text-muted
+            |  24H
+          | &nbsp;|&nbsp;
+          span.text-success
+            |  1W
+          | &nbsp;|&nbsp;
+          span.text-success
+            |  1M

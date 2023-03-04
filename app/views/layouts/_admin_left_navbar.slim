@@ -3,7 +3,7 @@ nav#sidebar.sidebar.js-sidebar
     a.sidebar-brand href="index.html"
       span.align-middle Alkhidmat Foundation
     ul.sidebar-nav
-      li.sidebar-item
+      li.sidebar-item class="#{'active' if params[:controller] == 'admin/dashboard'}"
         a.sidebar-link href="/admin/dashboard"
           i.align-middle data-feather="sliders"
           / = image_tag "feather/sliders", class: 'feather-icon'

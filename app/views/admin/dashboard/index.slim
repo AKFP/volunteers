@@ -1,7 +1,7 @@
 h1 Dashboard
 
 .row
-  .col-xl-6.col-xxl-5.d-flex
+  .col-xl-5.col-xxl-5.d-flex
     .w-100
       .row
         .col-sm-6
@@ -16,12 +16,7 @@ h1 Dashboard
                     i.align-middle[data-feather="check-circle"]
               h1.mt-1.mb-3
                 = Volunteer.registered.count
-              / .mb-0
-              /   span.text-danger
-              /     i.mdi.mdi-arrow-bottom-right
-              /     |  -3.65%
-              /   span.text-muted
-              /     | Since last week
+
           .card
             .card-body
               .row
@@ -33,12 +28,6 @@ h1 Dashboard
                     i.align-middle[data-feather="check"]
               h1.mt-1.mb-3
                 = Volunteer.approved.count
-              / .mb-0
-              /   span.text-success
-              /     i.mdi.mdi-arrow-bottom-right
-              /     |  5.25%
-              /   span.text-muted
-              /     | Since last week
         .col-sm-6
           .card
             .card-body
@@ -51,12 +40,6 @@ h1 Dashboard
                     i.align-middle[data-feather="shield"]
               h1.mt-1.mb-3
                 = User.with_role(:ambassador).count
-              / .mb-0
-              /   span.text-success
-              /     i.mdi.mdi-arrow-bottom-right
-              /     |  6.65%
-              /   span.text-muted
-              /     | Since last week
 
           .card
             .card-body
@@ -70,30 +53,105 @@ h1 Dashboard
               h1.mt-1.mb-3
                 = Volunteer.count
 
-  .col-xl-3.col-xxl-3
+
+  .col-xl-7.col-xxl-7
     .card
       .card-body
         .row
           .col.mt-0
             h5.card-title
-              | Registered in last <span class="msg">24 Hours</span>
+              | Volunteers by Region
           .col-auto
             .stat.text-primary
-              i.align-middle[data-feather="shield"]
-        h1.mt-1.mb-3
-          .count-placeholder
-            = @last_24_hours
+              i.align-middle[data-feather="user-plus"]
+        .row
+          .col-md-6
+            table.table.mb-0
+              tbody
+                - @regions[0..4].each do |r|
+                  tr
+                    td= r.name
+                    td= Volunteer.filter_by_region_id(r.id).size
 
-        .mb-0 data-controller="dashboard"
-          span
-            a.lnk_count.text-success data-count="#{@last_24_hours}" data-text="24 Hours" data-action="click->dashboard#updateRegistrationCount"
-              |  24H
-          | &nbsp;|&nbsp;
-          span
-            a.lnk_count.text-muted data-count="#{@last_week}" data-text="Week" data-action="click->dashboard#updateRegistrationCount"
-              |  1W
-          | &nbsp;|&nbsp;
-          span
-            a.lnk_count.text-muted data-count="#{@last_month}" data-text="Month" data-action="click->dashboard#updateRegistrationCount"
-              |  1M
+          .col-md-6
+            table.table.mb-0
+              tbody
+                - @regions[5..9].each do |r|
+                  tr
+                    td= r.name
+                    td= Volunteer.filter_by_region_id(r.id).size
 
+
+
+
+.row
+  .col-xl-5.col-xxl-5.d-flex
+    .w-100
+      .row
+        .col-sm-12
+          .card
+            .card-body
+              .row
+                .col.mt-0
+                  h5.card-title
+                    | Registered in last <span class="msg">24 Hours</span>
+                .col-auto
+                  .stat.text-primary
+                    i.align-middle[data-feather="award"]
+              h1.mt-1.mb-3
+                .count-placeholder
+                  = @last_24_hours
+
+              .mb-0 data-controller="dashboard"
+                span
+                  a.lnk_count.text-success data-count="#{@last_24_hours}" data-text="24 Hours" data-action="click->dashboard#updateRegistrationCount"
+                    |  24H
+                | &nbsp;|&nbsp;
+                span
+                  a.lnk_count.text-muted data-count="#{@last_week}" data-text="Week" data-action="click->dashboard#updateRegistrationCount"
+                    |  1W
+                | &nbsp;|&nbsp;
+                span
+                  a.lnk_count.text-muted data-count="#{@last_month}" data-text="Month" data-action="click->dashboard#updateRegistrationCount"
+                    |  1M
+
+
+  .col-xl-7.col-xxl-7.d-flex
+    .w-100
+      .row
+        .col-sm-12
+          .card
+            .card-body
+              .row
+                .col.mt-0
+                  h5.card-title
+                    | Volunteers by City
+                .col-auto
+                  .stat.text-primary
+                    i.align-middle[data-feather="user-plus"]
+              .row
+                .col-md-6
+                  table.table.mb-0
+                    tbody
+                      tr
+                        td Karachi
+                        td= @cities_count[:karachi]
+
+                      tr
+                        td Lahore
+                        td= @cities_count[:lahore]
+
+                      tr
+                        td Faisalabad
+                        td= @cities_count[:faisalabad]
+
+                .col-md-6
+                  table.table.mb-0
+                    tbody
+                      tr
+                        td Peshawar
+                        td= @cities_count[:peshawar]
+
+                      tr
+                        td Quetta
+                        td= @cities_count[:quetta]

@@ -1,5 +1,10 @@
 namespace :api do
   namespace :v1 do
+    post '/forgot_password', to: 'password_resets#create'
+    get '/verify_token/:token', to: 'password_resets#verify_token'
+    put '/password_resets', to: 'password_resets#update'
+
+
     scope :users, module: :users do
       post '/', to: 'registrations#create', as: :user_registration
     end

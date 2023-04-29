@@ -1,24 +1,23 @@
-# README
+# Volunteers Management System
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version => 3.1.2
 
-* System dependencies
+* Rails version => 7.0.4
 
-* Configuration
 
-* Database creation
+## Servers
 
-* Database initialization
+* API prefix  
+/api/v1/
 
-* How to run the test suite
+* Stage  
+URL: https://vdm.alkhidmat.org
 
-* Services (job queues, cache servers, search engines, etc.)
+* Development  
+URL: https://vdm.attribes.com
 
-* Deployment instructions
-
-* ...
